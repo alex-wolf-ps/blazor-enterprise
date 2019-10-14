@@ -128,12 +128,12 @@ namespace BethanysPieShopHRM.Server.Services
             throw new NotImplementedException();
         }
 
-        public Task<Employee> UpdateEmployee(Employee employee)
+        public Task DeleteEmployee(int employeeId)
         {
             throw new NotImplementedException();
         }
 
-        public Task DeleteEmployee(int employeeId)
+        public Task UpdateEmployee(Employee employee)
         {
             throw new NotImplementedException();
         }

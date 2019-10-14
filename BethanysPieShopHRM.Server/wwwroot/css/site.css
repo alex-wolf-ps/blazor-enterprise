@@ -52,14 +52,14 @@ nav {
     overflow: hidden;
 }
 
-.profile-bg img {
-    width: 250px;
-    height: 250px;
-    filter: blur(16px);
-    -webkit-filter: blur(16px);
-    margin: -5px;
-    border: 0;
-}
+    .profile-bg img {
+        width: 250px;
+        height: 250px;
+        filter: blur(16px);
+        -webkit-filter: blur(16px);
+        margin: -5px;
+        border: 0;
+    }
 
 .profile-picture img.account-photo {
     width: 160px;
@@ -87,14 +87,14 @@ nav {
     transition: margin .25s ease-out;
 }
 
-#sidebar-wrapper .sidebar-heading {
-    padding: 0.875rem 1.25rem;
-    font-size: 1.2rem;
-}
+    #sidebar-wrapper .sidebar-heading {
+        padding: 0.875rem 1.25rem;
+        font-size: 1.2rem;
+    }
 
-#sidebar-wrapper .list-group {
-    width: 15rem;
-}
+    #sidebar-wrapper .list-group {
+        width: 15rem;
+    }
 
 .list-group-item.active {
     color: white;
@@ -161,4 +161,11 @@ nav {
     position: absolute;
     right: 30px;
     bottom: 30px;
+}
+
+
+.track-order-map {
+    width: 350px;
+    height: 500px;
+    flex-shrink: 0;
 }
