@@ -60,6 +60,7 @@
                     {
                     <option value="@country.CountryId">@country.Name</option>
                     }
+                /**/
             </InputSelect>
             <ValidationMessage For="@(() => Employee.Country)" />
         </div>
@@ -68,6 +69,18 @@
             <label for="phonenumber">Phone number: </label>
             <InputText id="phonenumber" class="form-control" @bind-Value="@Employee.PhoneNumber" placeholder="Enter phone number"></InputText>
             <ValidationMessage For="@(() => Employee.PhoneNumber)" />
+        </div>
+
+        <div class="form-group">
+            <label for="longitude">Longitude: </label>
+            <InputNumber id="longitude" class="form-control" @bind-Value="@Employee.Longitude"></InputNumber>
+            <ValidationMessage For="@(() => Employee.Longitude)" />
+        </div>
+
+        <div class="form-group">
+            <label for="latitude">Latitude: </label>
+            <InputNumber id="latitude" class="form-control" @bind-Value="@Employee.Latitude"></InputNumber>
+            <ValidationMessage For="@(() => Employee.Latitude)" />
         </div>
 
         <div class="form-group">
@@ -83,6 +96,7 @@
                     {
                     <option value="@jobCategory.JobCategoryId">@jobCategory.JobCategoryName</option>
                     }
+                /**/
             </InputSelect>
             <ValidationMessage For="@(() => Employee.Country)" />
         </div>
@@ -118,6 +132,7 @@
             <InputDate id="exitdate" class="form-control" @bind-Value="@Employee.ExitDate" placeholder="Enter exit date"></InputDate>
             <ValidationMessage For="@(() => Employee.ExitDate)" />
         </div>
+
         <div class="form-group">
             <label for="comment">Comment: </label>
             <InputTextArea id="comment" class="form-control" @bind-Value="@Employee.Comment" placeholder="Enter comment"></InputTextArea>
