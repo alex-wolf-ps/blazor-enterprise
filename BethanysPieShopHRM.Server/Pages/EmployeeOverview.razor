@@ -1,7 +1,7 @@
 ﻿@page "/employeeoverview"
 @inherits EmployeeOverviewBase
 
-<h3>All employees</h3>
+<h1 class="page-title">All employees</h1>
 
 @if (Employees == null)
 {
@@ -28,9 +28,10 @@ else
                     <td>@employee.FirstName</td>
                     <td>@employee.LastName</td>
                     <td>
-                        <NavLink href="@($"employeedetail/{employee.EmployeeId}")" class="btn btn-primary">
+                        <NavLink href="@($"employeedetail/{employee.EmployeeId}")" class="btn btn-primary table-btn">
                             <i class="fas fa-info-circle"></i>
-                        </NavLink><NavLink href="@($"employeeedit/{employee.EmployeeId}")" class="btn btn-primary">
+                        </NavLink>
+                        <NavLink href="@($"employeeedit/{employee.EmployeeId}")" class="btn btn-primary table-btn">
                             <i class="fas fa-edit"></i>
                         </NavLink>
                     </td>
@@ -40,6 +41,6 @@ else
     </table>
 }
 
-<button @onclick="QuickAddEmployee" class="btn btn-dark">+</button>
+<button @onclick="QuickAddEmployee" class="btn btn-dark table-btn quick-add-btn">&nbsp;&nbsp;+&nbsp;&nbsp;</button>
 
 <AddEmployeeDialog @ref="AddEmployeeDialog"></AddEmployeeDialog>
