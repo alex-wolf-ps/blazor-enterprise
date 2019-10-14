@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.Reflection;
 
 namespace BethanysPieShopHRM.Shared
 {
@@ -36,5 +35,8 @@ namespace BethanysPieShopHRM.Shared
         
         public int JobCategoryId { get; set; }
         public JobCategory JobCategory { get; set; }
+
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
     }
 }

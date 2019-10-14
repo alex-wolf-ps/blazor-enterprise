@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BethanysPieShopHRM.Shared
+﻿namespace BethanysPieShopHRM.Shared
 {
     public class JobCategory
     {

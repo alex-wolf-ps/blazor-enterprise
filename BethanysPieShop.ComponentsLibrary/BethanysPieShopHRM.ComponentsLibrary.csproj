@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\deliveryMap.js" />
+    <None Include="wwwroot\leaflet\images\layers-2x.png" />
+    <None Include="wwwroot\leaflet\images\layers.png" />
+    <None Include="wwwroot\leaflet\images\marker-icon-2x.png" />
+    <None Include="wwwroot\leaflet\images\marker-icon.png" />
+    <None Include="wwwroot\leaflet\images\marker-shadow.png" />
+    <None Include="wwwroot\leaflet\leaflet.css" />
+    <None Include="wwwroot\leaflet\leaflet.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.0.0" />
   </ItemGroup>

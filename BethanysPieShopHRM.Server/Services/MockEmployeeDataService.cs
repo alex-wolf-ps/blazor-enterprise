@@ -64,14 +64,14 @@ namespace BethanysPieShopHRM.Server.Services
         {
             _countries = new List<Country>
             {
-                //new Country {CountryId = 1, name = "Belgium"},
-                //new Country {CountryId = 2, name = "Netherlands"},
-                //new Country {CountryId = 3, name = "USA"},
-                //new Country {CountryId = 4, name = "Japan"},
-                //new Country {CountryId = 5, name = "China"},
-                //new Country {CountryId = 6, name = "UK"},
-                //new Country {CountryId = 7, name = "France"},
-                //new Country {CountryId = 8, name = "Brazil"}
+                new Country {CountryId = 1, Name = "Belgium"},
+                new Country {CountryId = 2, Name = "Netherlands"},
+                new Country {CountryId = 3, Name = "USA"},
+                new Country {CountryId = 4, Name = "Japan"},
+                new Country {CountryId = 5, Name = "China"},
+                new Country {CountryId = 6, Name = "UK"},
+                new Country {CountryId = 7, Name = "France"},
+                new Country {CountryId = 8, Name = "Brazil"}
             };
         }
 

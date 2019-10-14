@@ -13,7 +13,8 @@ namespace BethanysPieShopHRM.Server.Components
         public event Action OnDialogClose;
         public Employee Employee { get; set; } = new Employee { CountryId = 1, JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now };
 
-        [Inject] public IEmployeeDataService EmployeeDataService { get; set; }
+        [Inject] 
+        public IEmployeeDataService EmployeeDataService { get; set; }
 
         public void Show()
         {

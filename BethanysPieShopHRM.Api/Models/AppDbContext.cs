@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using BethanysPieShopHRM.Shared;
 using Microsoft.EntityFrameworkCore;
 
@@ -61,7 +58,9 @@ namespace BethanysPieShopHRM.Api.Models
                 JobCategoryId = 1,
                 Comment = "Lorem Ipsum",
                 ExitDate = null,
-                JoinedDate = new DateTime(2015, 3, 1)
+                JoinedDate = new DateTime(2015, 3, 1),
+                Latitude = 50.8503, 
+                Longitude = 4.3517
             });
         }
     }
