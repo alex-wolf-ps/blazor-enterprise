@@ -20,10 +20,65 @@ nav {
 }
 
 #navbarSupportedContent {
-    height: 2rem;
+    height: 80px;
+}
+
+.navbar {
+    padding: 0;
+}
+
+.sidebar-logo {
+    height: 80px;
+    background-color: #a593c2;
+    border-color: #a593c2;
+    width: 240px;
+}
+
+
+/*profile picture*/
+.profile {
+    width: 240px;
+    overflow-y: visible;
+    position: absolute;
+}
+
+.profile-bg, .profile-picture {
+    width: 240px;
+    height: 240px;
+    position: absolute;
+}
+
+.profile-bg {
+    overflow: hidden;
+}
+
+.profile-bg img {
+    width: 250px;
+    height: 250px;
+    filter: blur(16px);
+    -webkit-filter: blur(16px);
+    margin: -5px;
+    border: 0;
+}
+
+.profile-picture img.account-photo {
+    width: 160px;
+    height: 160px;
+    margin-left: 40px;
+    margin-top: 40px;
+}
+
+.circle {
+    border-radius: 50%;
+}
+
+.menu {
+    position: absolute;
+    margin-top: 240px;
 }
 
 #sidebar-wrapper {
+    width: 240px;
     min-height: 100vh;
     margin-left: -15rem;
     -webkit-transition: margin .25s ease-out;
@@ -41,8 +96,24 @@ nav {
     width: 15rem;
 }
 
+.list-group-item.active {
+    color: white;
+    background-color: #a593c2 !important;
+    border-color: #a593c2;
+    font-weight: bold;
+}
+
+.title {
+    color: white;
+    padding-left: 25px;
+}
+
 #page-content-wrapper {
     min-width: 100vw;
+}
+
+.container-fluid {
+    padding: 25px;
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -62,4 +133,32 @@ nav {
     #wrapper.toggled #sidebar-wrapper {
         margin-left: -15rem;
     }
+}
+
+.page-title {
+    color: #23cfa7;
+    font-size: 28px;
+}
+
+.table {
+    background-color: white;
+}
+
+.table-btn {
+    background-color: #23cfa7;
+    border-color: #23cfa7;
+    border-radius: 50%;
+}
+
+    .table-btn:hover {
+        color: #fff;
+        background-color: #a593c2;
+        border-color: #a593c2;
+    }
+
+.quick-add-btn {
+    font-size: 36px;
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
 }
