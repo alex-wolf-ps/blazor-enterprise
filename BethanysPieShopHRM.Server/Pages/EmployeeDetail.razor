@@ -1,0 +1,86 @@
+﻿
+@page "/employeedetail/{EmployeeId}"
+@inherits EmployeeDetailBase
+
+<h3>Details for @Employee.FirstName @Employee.LastName</h3>
+
+@{
+    var leadingFormat = "00000";
+    //var a = Employee.EmployeeId.ToString("00000");
+}
+
+<img src="@($"https://gillcleerenpluralsight.blob.core.windows.net/person/{Employee.EmployeeId}.jpg")" class="rounded-circle" />
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label">Employee ID</label>
+    <div class="col-sm-10">
+        <label type="text" class="form-control-plaintext">@Employee.EmployeeId.ToString(leadingFormat)</label>
+    </div>
+</div>
+
+
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label">First name</label>
+    <div class="col-sm-10">
+        <label type="text" readonly class="form-control-plaintext">@Employee.FirstName</label>
+    </div>
+</div>
+
+
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label">Last name</label>
+    <div class="col-sm-10">
+        <label type="text" readonly class="form-control-plaintext">@Employee.BirthDate.ToShortDateString()</label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label">Last name</label>
+    <div class="col-sm-10">
+        <label type="text" readonly class="form-control-plaintext">@Employee.Email</label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label">Last name</label>
+    <div class="col-sm-10">
+        <label type="text" readonly class="form-control-plaintext">@Employee.Gender</label>
+    </div>
+</div>
+
+<style>
+
+
+    .track-order {
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .track-order > div {
+            overflow-y: hidden;
+        }
+
+    .track-order-body {
+        flex-grow: 1;
+        display: flex;
+    }
+
+    .track-order-map {
+        width: 350px;
+        height: 500px;
+        flex-shrink: 0;
+    }
+</style>
+
+@*<div class="track-order">
+
+    <div class="track-order-body">
+        <div class="track-order-map">*@
+<div class="track-order-map">
+    <Map Zoom="10" Markers="MapMarkers" ></Map>
+</div>
+@*</div>
+        </div>
+    </div>*@

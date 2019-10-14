@@ -1,0 +1,45 @@
+﻿@page "/employeeoverview"
+@inherits EmployeeOverviewBase
+
+<h3>All employees</h3>
+
+@if (Employees == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Employee ID</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in Employees)
+            {
+                <tr>
+                    <td><img src="@($"https://gillcleerenpluralsight.blob.core.windows.net/person/{employee.EmployeeId}-small.jpg")" class="rounded-circle" /></td>
+                    <td>@employee.EmployeeId</td>
+                    <td>@employee.FirstName</td>
+                    <td>@employee.LastName</td>
+                    <td>
+                        <NavLink href="@($"employeedetail/{employee.EmployeeId}")" class="btn btn-primary">
+                            <i class="fas fa-info-circle"></i>
+                        </NavLink><NavLink href="@($"employeeedit/{employee.EmployeeId}")" class="btn btn-primary">
+                            <i class="fas fa-edit"></i>
+                        </NavLink>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<button @onclick="QuickAddEmployee" class="btn btn-dark">+</button>
+
+<AddEmployeeDialog @ref="AddEmployeeDialog"></AddEmployeeDialog>
