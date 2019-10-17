@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using BethanysPieShopHRM.Server.Components;
 using BethanysPieShopHRM.Server.Services;
@@ -10,6 +11,9 @@ namespace BethanysPieShopHRM.Server.Pages
 {
     public class EmployeeOverviewBase: ComponentBase
     {
+        [Inject] 
+        public HttpClient HttpClient { get; set; }
+
         [Inject]
         public IEmployeeDataService EmployeeDataService { get; set; }
 
@@ -26,6 +30,8 @@ namespace BethanysPieShopHRM.Server.Pages
             Employees = (await EmployeeDataService.GetAllEmployees()).ToList();
 
             AddEmployeeDialog.OnDialogClose += AddEmployeeDialog_OnDialogClose;
+
+            HttpClient.GetStringAsync("https://www.bethan")
         }
 
         private async void AddEmployeeDialog_OnDialogClose()
