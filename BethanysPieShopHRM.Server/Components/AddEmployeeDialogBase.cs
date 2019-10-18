@@ -10,8 +10,10 @@ namespace BethanysPieShopHRM.Server.Components
     {
         public bool ShowDialog { get; set; }
 
-        public event Action OnDialogClose;
         public Employee Employee { get; set; } = new Employee { CountryId = 1, JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now };
+
+        [Parameter]
+        public EventCallback<bool> CloseEventCallback { get; set; }
 
         [Inject] 
         public IEmployeeDataService EmployeeDataService { get; set; }
@@ -33,7 +35,7 @@ namespace BethanysPieShopHRM.Server.Components
             await EmployeeDataService.AddEmployee(Employee);
             ShowDialog = false;
 
-            OnDialogClose?.Invoke();
+            await CloseEventCallback.InvokeAsync(true);
             StateHasChanged();
         }
     }

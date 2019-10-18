@@ -11,9 +11,6 @@ namespace BethanysPieShopHRM.Server.Pages
 {
     public class EmployeeOverviewBase: ComponentBase
     {
-        [Inject] 
-        public HttpClient HttpClient { get; set; }
-
         [Inject]
         public IEmployeeDataService EmployeeDataService { get; set; }
 
@@ -29,12 +26,10 @@ namespace BethanysPieShopHRM.Server.Pages
         {
             Employees = (await EmployeeDataService.GetAllEmployees()).ToList();
 
-            AddEmployeeDialog.OnDialogClose += AddEmployeeDialog_OnDialogClose;
-
-            HttpClient.GetStringAsync("https://www.bethan")
+            //AddEmployeeDialog.OnDialogClose += AddEmployeeDialog_OnDialogClose;
         }
 
-        private async void AddEmployeeDialog_OnDialogClose()
+        public async void AddEmployeeDialog_OnDialogClose()
         {
             Employees = (await EmployeeDataService.GetAllEmployees()).ToList();
             StateHasChanged();
