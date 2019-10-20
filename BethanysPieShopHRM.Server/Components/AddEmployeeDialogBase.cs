@@ -18,10 +18,18 @@ namespace BethanysPieShopHRM.Server.Components
         [Inject] 
         public IEmployeeDataService EmployeeDataService { get; set; }
 
+      
+
         public void Show()
         {
+            ResetDialog();
             ShowDialog = true;
             StateHasChanged();
+        }
+
+        private void ResetDialog()
+        {
+            Employee = new Employee { CountryId = 1, JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now };
         }
 
         public void Close()
