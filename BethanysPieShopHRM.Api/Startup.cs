@@ -29,11 +29,10 @@ namespace BethanysPieShopHRM.Api
             services.AddScoped<IJobCategoryRepository, JobCategoryRepository>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
-            //services.AddCors(options =>
-            //{
-            //    options.AddPolicy("Open",
-            //        builder => builder.AllowAnyOrigin().AllowAnyHeader());
-            //});
+            services.AddCors(options =>
+            {
+                options.AddPolicy("Open", builder => builder.AllowAnyOrigin().AllowAnyHeader());
+            });
 
             services.AddControllers();
                 //.AddJsonOptions(options => options.JsonSerializerOptions.ca);

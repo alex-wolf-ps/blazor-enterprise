@@ -28,12 +28,12 @@ else
                     <td>@employee.FirstName</td>
                     <td>@employee.LastName</td>
                     <td>
-                        <NavLink href="@($"employeedetail/{employee.EmployeeId}")" class="btn btn-primary table-btn">
+                        <a href="@($"employeedetail/{employee.EmployeeId}")" class="btn btn-primary table-btn">
                             <i class="fas fa-info-circle"></i>
-                        </NavLink>
-                        <NavLink href="@($"employeeedit/{employee.EmployeeId}")" class="btn btn-primary table-btn">
+                        </a>
+                        <a href="@($"employeeedit/{employee.EmployeeId}")" class="btn btn-primary table-btn">
                             <i class="fas fa-edit"></i>
-                        </NavLink>
+                        </a>
                     </td>
                 </tr>
             }

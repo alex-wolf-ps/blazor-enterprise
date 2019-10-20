@@ -14,19 +14,13 @@ namespace BethanysPieShopHRM.Server.Pages
         [Inject]
         public IEmployeeDataService EmployeeDataService { get; set; }
 
-        [Inject]
-        public ICountryDataService CountryDataService { get; set; }
-
         public List<Employee> Employees { get; set; }
-        public List<Country> Countries { get; set; }
 
         protected AddEmployeeDialog AddEmployeeDialog { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
             Employees = (await EmployeeDataService.GetAllEmployees()).ToList();
-
-            //AddEmployeeDialog.OnDialogClose += AddEmployeeDialog_OnDialogClose;
         }
 
         public async void AddEmployeeDialog_OnDialogClose()
