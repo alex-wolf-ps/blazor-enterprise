@@ -19,67 +19,101 @@ namespace BethanysPieShopHRM.Api.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("BethanysPieShopHRM.Shared.Expense", b =>
+            {
+                b.Property<int>("ExpenseId")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int")
+                    .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                b.Property<string>("Title")
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("Description")
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("Amount")
+                    .HasColumnType("decimal");
+
+                b.Property<int>("ExpenseType")
+                    .HasColumnType("nvarchar(max)");
+
+                b.HasKey("ExpenseId");
+
+                b.ToTable("Expenses");
+
+                b.HasData(
+                    new
+                    {
+                        ExpenseId = 1,
+                        Title = "Pluralsight Live",
+                        Description = "I went to a conference",
+                        Amount = 999.99,
+                        ExpenseType = "Conference"
+                    });
+            });
+
             modelBuilder.Entity("BethanysPieShopHRM.Shared.Country", b =>
-                {
-                    b.Property<int>("CountryId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+            {
+                b.Property<int>("CountryId")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int")
+                    .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("Name")
+                    .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CountryId");
+                b.HasKey("CountryId");
 
-                    b.ToTable("Countries");
+                b.ToTable("Countries");
 
-                    b.HasData(
-                        new
-                        {
-                            CountryId = 1,
-                            Name = "Belgium"
-                        },
-                        new
-                        {
-                            CountryId = 2,
-                            Name = "Germany"
-                        },
-                        new
-                        {
-                            CountryId = 3,
-                            Name = "Netherlands"
-                        },
-                        new
-                        {
-                            CountryId = 4,
-                            Name = "USA"
-                        },
-                        new
-                        {
-                            CountryId = 5,
-                            Name = "Japan"
-                        },
-                        new
-                        {
-                            CountryId = 6,
-                            Name = "China"
-                        },
-                        new
-                        {
-                            CountryId = 7,
-                            Name = "UK"
-                        },
-                        new
-                        {
-                            CountryId = 8,
-                            Name = "France"
-                        },
-                        new
-                        {
-                            CountryId = 9,
-                            Name = "Brazil"
-                        });
-                });
+                b.HasData(
+                    new
+                    {
+                        CountryId = 1,
+                        Name = "Belgium"
+                    },
+                    new
+                    {
+                        CountryId = 2,
+                        Name = "Germany"
+                    },
+                    new
+                    {
+                        CountryId = 3,
+                        Name = "Netherlands"
+                    },
+                    new
+                    {
+                        CountryId = 4,
+                        Name = "USA"
+                    },
+                    new
+                    {
+                        CountryId = 5,
+                        Name = "Japan"
+                    },
+                    new
+                    {
+                        CountryId = 6,
+                        Name = "China"
+                    },
+                    new
+                    {
+                        CountryId = 7,
+                        Name = "UK"
+                    },
+                    new
+                    {
+                        CountryId = 8,
+                        Name = "France"
+                    },
+                    new
+                    {
+                        CountryId = 9,
+                        Name = "Brazil"
+                    });
+            });
 
             modelBuilder.Entity("BethanysPieShopHRM.Shared.Employee", b =>
                 {

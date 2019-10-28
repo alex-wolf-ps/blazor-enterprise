@@ -1,0 +1,140 @@
+﻿<div class="bg-light" id="sidebar-wrapper">
+    <div class="sidebar-logo">
+        <img class="img-responsive" id="logo" src="images/bethanylogo.png" />
+    </div>
+    <div class="profile">
+        <div class="profile-bg">
+            <img class="img-responsive" src="images/profilePicture.jpg" />
+        </div>
+        <div class="profile-picture">
+            <img class="img-responsive circle account-photo" src="images/profilePicture.jpg" />
+        </div>
+    </div>
+    <div class="menu list-group list-group-flush">
+        <nav id="sidebar">
+            <ul class="list-unstyled components">
+                <li>
+                    <NavLink href="/" Match="NavLinkMatch.All">
+                        Home
+                    </NavLink>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#employees" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Employees</a>
+                    <ul class="collapse list-unstyled sub-menu" id="employees">
+                        <li>
+                            <NavLink href="/employeeoverview">
+                                Employees
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink href="/employeeedit">
+                                Add new employee
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink href="/employeeedit">
+                                Employee Review
+                            </NavLink>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#jobs" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Jobs</a>
+                    <ul class="collapse list-unstyled sub-menu" id="jobs">
+                        <li>
+                            <NavLink href="/employeeoverview">
+                                Employees
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink href="/employeeedit">
+                                Add new employee
+                            </NavLink>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#training" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Expenses</a>
+                    <ul class="collapse list-unstyled sub-menu" id="training">
+                        <li>
+                            <NavLink href="/expenses">
+                                Expenses
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink href="/addexpense">
+                                New Expense
+                            </NavLink>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <NavLink href="/staffdirectory">
+                        Staff Directory
+                    </NavLink>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    </div>
+    <style>
+        #sidebar {
+            color: #fff;
+            transition: all 0.3s;
+        }
+
+            #sidebar.active {
+                margin-left: -250px;
+            }
+
+            #sidebar .sidebar-header {
+                padding: 20px;
+                background: #6d7fcc;
+            }
+
+            #sidebar ul.components {
+                padding: 20px 0;
+            }
+
+            #sidebar ul p {
+                color: #fff;
+                padding: 10px;
+            }
+
+            #sidebar ul li a {
+                padding: 10px;
+                font-size: 1.1em;
+                display: block;
+                color: #fff;
+            }
+
+                #sidebar ul li a:hover {
+                    color: #7386D5;
+                    text-decoration: none;
+                    background: #fff;
+                }
+
+            #sidebar ul li.active > a,
+            a[aria-expanded="true"] {
+                color: #fff;
+            }
+
+        a[data-toggle="collapse"] {
+            position: relative;
+        }
+
+        .dropdown-toggle::after {
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+        }
+
+        #sidebar .sub-menu li a {
+            padding-left: 25px;
+        }
+    </style>

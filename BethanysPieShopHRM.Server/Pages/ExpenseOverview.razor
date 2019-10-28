@@ -1,0 +1,40 @@
+﻿@page "/expenses"
+@inherits ExpenseOverviewBase
+
+<h1 class="page-title">All Expenses</h1>
+
+@if (Expenses == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Expense ID</th>
+                <th>Title</th>
+                <th>Amount</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var expense in Expenses)
+            {
+                <tr>
+                    <td>@expense.ExpenseId</td>
+                    <td>@expense.Title</td>
+                    <td>@expense.Amount</td>
+                    <td>
+                        <a href="@($"expensedetail/{expense.ExpenseId}")" class="btn btn-primary table-btn">
+                            <i class="fas fa-info-circle"></i>
+                        </a>
+                        <a href="@($"expenseedit/{expense.ExpenseId}")" class="btn btn-primary table-btn">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

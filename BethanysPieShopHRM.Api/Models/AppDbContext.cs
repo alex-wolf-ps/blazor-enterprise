@@ -14,6 +14,7 @@ namespace BethanysPieShopHRM.Api.Models
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<JobCategory> JobCategories { get; set; }
+        public DbSet<Expense> Expenses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -62,6 +63,16 @@ namespace BethanysPieShopHRM.Api.Models
                 Latitude = 50.8503, 
                 Longitude = 4.3517
             });
+
+            modelBuilder.Entity<Expense>().HasData(new Expense() 
+                { 
+                    ExpenseId = 1,
+                    Title = "Conference Expense",
+                    Description = "I went to a conference",
+                    Amount = 900,
+                    ExpenseType = "Conference"
+                });
+
         }
     }
 }

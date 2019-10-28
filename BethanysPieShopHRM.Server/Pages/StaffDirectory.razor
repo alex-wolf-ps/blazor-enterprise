@@ -1,0 +1,31 @@
+﻿@page "/staffdirectory"
+@inherits StaffDirectoryBase
+
+<h1 class="page-title">Staff Directory</h1>
+@if (Employees == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    @foreach (var employee in Employees)
+    {
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="images/professional.png" class="card-img-top">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">@employee.FirstName @employee.LastName</h5>
+                        <p class="card-text">@employee.PhoneNumber</p>
+                        <p class="card-text">
+                            <a href="#" class="btn btn-secondary">Email</a>
+                            <a href="#" class="btn btn-secondary">Call</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}

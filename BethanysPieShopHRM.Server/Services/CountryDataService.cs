@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using BethanysPieShopHRM.Shared;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
-using BethanysPieShopHRM.Shared;
 
 namespace BethanysPieShopHRM.Server.Services
 {

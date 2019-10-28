@@ -138,6 +138,7 @@ nav {
 .page-title {
     color: #23cfa7;
     font-size: 28px;
+    font-weight:bold;
 }
 
 .table {
@@ -204,3 +205,14 @@ nav {
         background-color: #a593c2 !important;
         border-color: #a593c2 !important;
     }
+
+
+.widget {
+    padding: 25px;
+    margin: 10px;
+    background: #fff;
+}
+
+.widget h3 {
+    margin: 10px;
+}

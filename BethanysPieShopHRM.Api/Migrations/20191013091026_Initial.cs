@@ -7,6 +7,23 @@ namespace BethanysPieShopHRM.Api.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+
+            migrationBuilder.CreateTable(
+                name: "Expenses",
+                columns: table => new
+                {
+                    ExpenseId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    Amount = table.Column<decimal>(nullable: true),
+                    ExpenseType = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Expenses", x => x.ExpenseId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Countries",
                 columns: table => new
@@ -131,6 +148,9 @@ namespace BethanysPieShopHRM.Api.Migrations
 
             migrationBuilder.DropTable(
                 name: "JobCategories");
+
+            migrationBuilder.DropTable(
+                name: "Expenses");
         }
     }
 }
