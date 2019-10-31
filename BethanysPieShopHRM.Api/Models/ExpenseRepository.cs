@@ -24,5 +24,12 @@ namespace BethanysPieShopHRM.Api.Models
         {
             return _appDbContext.Expenses.FirstOrDefault(x => x.ExpenseId == id);
         }
+
+        public Expense AddExpense(Expense expense)
+        {
+            var addedEntity = _appDbContext.Expenses.Add(expense);
+            _appDbContext.SaveChanges();
+            return addedEntity.Entity;
+        }
     }
 }

@@ -10,5 +10,7 @@ namespace BethanysPieShopHRM.Api.Models
     {
         public IEnumerable<Expense> GetAllExpenses();
         public Expense GetExpenseById(int id);
+
+        Expense AddExpense(Expense expense);
     }
 }

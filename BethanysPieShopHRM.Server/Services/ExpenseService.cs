@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using BethanysPieShopHRM.Shared;
@@ -15,6 +16,21 @@ namespace BethanysPieShopHRM.Server.Services
         public ExpenseService(HttpClient httpClient)
         {
             _httpClient = httpClient;
+        }
+
+        public async Task<Expense> EditExpense(Expense editExpense)
+        {
+            var expenseJson =
+                new StringContent(JsonSerializer.Serialize(editExpense), Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.PostAsync("api/expense", expenseJson);
+
+            if (response.IsSuccessStatusCode)
+            {
+                await JsonSerializer.DeserializeAsync<Expense>(await response.Content.ReadAsStreamAsync());
+            }
+
+            return null;
         }
 
         public async Task<IEnumerable<Expense>> GetAllExpenses()

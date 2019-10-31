@@ -1,0 +1,43 @@
+﻿@page "/expenseedit"
+@page "/expenseedit/{ExpenseId}"
+@using BethanysPieShopHRM.Shared
+@inherits ExpenseEditBase
+
+<h1 class="page-title">Add New Expense</h1>
+
+@if (!Saved)
+{
+<EditForm Model="@Expense" OnValidSubmit="@HandleValidSubmit">
+
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="form-group row">
+        <label for="title" class="col-sm-3">Title: </label>
+        <InputText id="title" class="form-control col-sm-8" @bind-Value="@Expense.Title" placeholder="Enter title"></InputText>
+        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Expense.Title)" />
+    </div>
+    <div class="form-group row">
+        <label for="Description" class="col-sm-3">Description: </label>
+        <InputText id="Description" class="form-control col-sm-8" @bind-Value="@Expense.Description" placeholder="Enter Description"></InputText>
+        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Expense.Description)" />
+    </div>
+    <div class="form-group row">
+        <label for="Description" class="col-sm-3">Amount: </label>
+        <InputNumber id="Description" class="form-control col-sm-8" @bind-Value="@Expense.Amount" placeholder="Enter Description"></InputNumber>
+        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Expense.Amount)" />
+    </div>
+    <div class="form-group row">
+        <label for="Description" class="col-sm-3">Expense Type: </label>
+        <InputText id="Description" class="form-control col-sm-8" @bind-Value="@Expense.ExpenseType" placeholder="Enter Description"></InputText>
+        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Expense.ExpenseType)" />
+    </div>
+
+    <button type="submit" class="btn btn-primary edit-btn">Save Expense</button>
+</EditForm>
+}
+else
+{
+    <div class="alert alert-info">@Message</div>
+    <a class="btn btn-outline-primary" @onclick="@NavigateToOverview">Back to overview</a>
+
+}
