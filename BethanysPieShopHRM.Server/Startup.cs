@@ -35,6 +35,7 @@ namespace BethanysPieShopHRM.Server
             services.AddScoped<ICountryDataService, CountryDataService>();
             services.AddScoped<IJobCategoryDataService, JobCategoryDataService>();
             services.AddScoped<IExpenseService, ExpenseService>();
+            services.AddBlazorContextMenu();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

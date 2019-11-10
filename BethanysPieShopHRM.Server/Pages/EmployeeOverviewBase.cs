@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -6,6 +7,7 @@ using BethanysPieShopHRM.Server.Components;
 using BethanysPieShopHRM.Server.Services;
 using BethanysPieShopHRM.Shared;
 using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.Logging;
 
 namespace BethanysPieShopHRM.Server.Pages
 {
@@ -14,12 +16,23 @@ namespace BethanysPieShopHRM.Server.Pages
         [Inject]
         public IEmployeeDataService EmployeeDataService { get; set; }
 
+        [Inject]
+        public ILogger<EmployeeOverviewBase> Logger { get; set; }
+
         public List<Employee> Employees { get; set; }
 
         protected AddEmployeeDialog AddEmployeeDialog { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
+            try
+            {
+                throw new Exception("blah");
+            } 
+            catch(Exception e)
+            {
+                Logger.LogError("that wasn't good", e);
+            }
             Employees = (await EmployeeDataService.GetAllEmployees()).ToList();
         }
 

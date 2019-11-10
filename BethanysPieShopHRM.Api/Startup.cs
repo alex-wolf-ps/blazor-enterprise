@@ -29,6 +29,7 @@ namespace BethanysPieShopHRM.Api
             services.AddScoped<IJobCategoryRepository, JobCategoryRepository>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IExpenseRepository, ExpenseRepository>();
+            services.AddScoped<ICurrencyRepository, CurrencyRepository>();
 
             services.AddCors(options =>
             {

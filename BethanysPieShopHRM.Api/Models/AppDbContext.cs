@@ -106,9 +106,10 @@ namespace BethanysPieShopHRM.Api.Models
                 Title = "Conference Expense",
                 Description = "I went to a conference",
                 Amount = 900,
-                ExpenseType = "Conference",
-                Created = DateTime.Now,
-                CurrencyId = 1
+                ExpenseType = ExpenseType.Conference,
+                Date = DateTime.Now,
+                CurrencyId = 1,
+                EmployeeId = 1
             });
 
         }

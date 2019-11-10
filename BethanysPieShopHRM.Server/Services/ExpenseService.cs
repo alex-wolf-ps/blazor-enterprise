@@ -39,6 +39,12 @@ namespace BethanysPieShopHRM.Server.Services
                 (await _httpClient.GetStreamAsync($"api/expense"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
 
+        public async Task<IEnumerable<Currency>> GetAllCurrencies()
+        {
+            return await JsonSerializer.DeserializeAsync<IEnumerable<Currency>>
+                (await _httpClient.GetStreamAsync($"api/currency"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+        }
+
         public async Task<Expense> GetExpenseById(int expenseId)
         {
             return await JsonSerializer.DeserializeAsync<Expense>

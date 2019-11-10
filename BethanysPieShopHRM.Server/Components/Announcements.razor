@@ -1,5 +1,4 @@
-﻿
-<div class="widget">
+﻿<div class="widget">
     <h3>Notices</h3>
 
     <table class="table table-striped">
@@ -11,21 +10,40 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Today is boss's appreciation day! Remind employees to thank their upline for all their support and hard work.</td>
-                <td>Low</td>
-                <td>10/10/2019</td>
-            </tr>
-            <tr>
-                <td>Open enrollment for benefits is coming - make sure a reminder is communicated to all staff.</td>
-                <td>High</td>
-                <td>10/05/2019</td>
-            </tr>
-            <tr>
-                <td>We won an award!  Our pie shops were recognized for their continued cleanliness by the American Pie Association.</td>
-                <td>Low</td>
-                <td>10/01/2019</td>
-            </tr>
+
+            <ContextMenuTrigger WrapperTag="tr" Data="1" Animation="Animation.Grow" MenuId="myMenu">
+        <td>Today is boss's appreciation day! Remind employees to thank their upline for all their support and hard work.</td>
+        <td>Low</td>
+        <td>10/10/2019</td>
+        </ContextMenuTrigger>
+        <tr>
+            <td>Open enrollment for benefits is coming - make sure a reminder is communicated to all staff.</td>
+            <td>High</td>
+            <td>10/05/2019</td>
+        </tr>
+        <tr>
+            <td>We won an award!  Our pie shops were recognized for their continued cleanliness by the American Pie Association.</td>
+            <td>Low</td>
+            <td>10/01/2019</td>
+        </tr>
         </tbody>
     </table>
+
+    <ContextMenu Id="myMenu">
+        <Item OnClick="@OnClick">Item 1</Item>
+        <Seperator />
+        <Item>
+            Submenu
+            <SubMenu>
+                <Item OnClick="@OnClick">Submenu Item 1</Item>
+                <Item OnClick="@OnClick">Submenu Item 2</Item>
+            </SubMenu>
+        </Item>
+    </ContextMenu>
 </div>
+@code{
+    void OnClick(ItemClickEventArgs e)
+    {
+        Console.WriteLine($"Item Clicked => Menu: {e.ContextMenuId}, MenuTarget: {e.ContextMenuTargetId}, IsCanceled: {e.IsCanceled}, MenuItem: {e.MenuItemElement}, MouseEvent: {e.MouseEvent}");
+    }
+}

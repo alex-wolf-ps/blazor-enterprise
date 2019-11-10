@@ -26,6 +26,8 @@ namespace BethanysPieShopHRM.Shared
         public Country Country { get; set; }
         public string PhoneNumber { get; set; }
         public bool Smoker { get; set; }
+        public bool IsOPEX { get; set; }
+        public bool IsFTE { get; set; }
         public MaritalStatus MaritalStatus { get; set; }
         public Gender Gender { get; set; }
         [StringLength(1000, ErrorMessage = "Comment length can't exceed 1000 characters.")]

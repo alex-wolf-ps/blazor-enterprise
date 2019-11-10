@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BethanysPieShopHRM.Shared;
+using Microsoft.EntityFrameworkCore;
 
 namespace BethanysPieShopHRM.Api.Models
 {
@@ -17,7 +18,7 @@ namespace BethanysPieShopHRM.Api.Models
 
         public IEnumerable<Expense> GetAllExpenses()
         {
-            return _appDbContext.Expenses;
+            return _appDbContext.Expenses.Include(x => x.Currency);
         }
 
         public Expense GetExpenseById(int id)

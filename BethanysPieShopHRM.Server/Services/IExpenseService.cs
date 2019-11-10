@@ -10,7 +10,7 @@ namespace BethanysPieShopHRM.Server.Services
     {
         public Task<IEnumerable<Expense>> GetAllExpenses();
         public Task<Expense> GetExpenseById(int id);
-
+        public Task<IEnumerable<Currency>> GetAllCurrencies();
         public Task<Expense> EditExpense(Expense editExpense);
     }
 }
