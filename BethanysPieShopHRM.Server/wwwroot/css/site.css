@@ -138,7 +138,7 @@ nav {
 .page-title {
     color: #23cfa7;
     font-size: 28px;
-    font-weight:bold;
+    font-weight: bold;
 }
 
 .table {
@@ -213,6 +213,18 @@ nav {
     background: #fff;
 }
 
-.widget h3 {
-    margin: 10px;
+    .widget h3 {
+        margin-left: 0px;
+    }
+
+    .widget img {
+        max-width: 100px;
+    }
+
+#sidebar-wrapper {
+    background: rgb(165, 147, 194) !important
+}
+
+.employee-box {
+    padding: 10px;
 }

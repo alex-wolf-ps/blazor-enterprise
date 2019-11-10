@@ -1,22 +1,100 @@
 ﻿@page "/"
+@using BethanysPieShopHRM.Shared
 
 <div class="row"><div class="col-md-8"><h1 class="page-title">Welcome to Bethany's Pie Shop HRM!</h1></div></div>
 <br />
 
 <div class="row">
     <div class="col-md-8">
-        <Announcements />
+        <NewsWidget />
+
+        <div class="widget">
+            <h3>Tasks</h3>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var task in Tasks)
+                    {
+                        <tr>
+                            <td>@task.Title</td>
+                            <td>@task.Description</td>
+                            <td>@task.Status</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
     <div class="col-md-4">
+        <div class="widget">
+            <h3>Report a Concern</h3>
+            <p>It's simple, safe and anonymous.</p>
 
+            <EditForm Model="@NewConcern">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+                <div class="form-group row">
+                    <label for="title" class="col-sm-3">Title: </label>
+                    <InputText id="title" class="form-control col-sm-8" @bind-Value="@NewConcern.Title" placeholder="Enter title"></InputText>
+                    <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => NewConcern.Title)" />
+                </div>
+
+                <div class="form-group row">
+                    <label for="title" class="col-sm-3">Title: </label>
+                    <InputText id="title" class="form-control col-sm-8" @bind-Value="@NewConcern.Description" placeholder="Enter title"></InputText>
+                    <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => NewConcern.Description)" />
+                </div>
+
+                <button type="submit" class="btn btn-primary edit-btn float-right">Submit</button>
+            </EditForm>
+        </div>
+
+        <NewEmployeesWidget />
     </div>
-</div>
-<div class="row">
-    <div class="col-md-4">
-
-    </div><div class="col-md-4">
-
-    </div><div class="col-md-4">
-
     </div>
-</div>
+@code {
+    public List<HRTask> Tasks { get; set; } = new List<HRTask>();
+
+    public Concern NewConcern { get; set; } = new Concern();
+
+
+    protected async Task HandleValidSubmit()
+    {
+        // submit concern
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Tasks = new List<HRTask>()
+        {
+            new HRTask()
+            {
+                TaskId = 1,
+                Description = "Greet the new employees",
+                Title = "Say hello",
+                Status = Status.Open
+            },
+            new HRTask()
+            {
+                TaskId = 1,
+                Description = "Greet the new employees",
+                Title = "Say hello",
+                Status = Status.Open
+            },
+            new HRTask()
+            {
+                TaskId = 1,
+                Description = "Greet the new employees",
+                Title = "Say hello",
+                Status = Status.Open
+            }
+        };
+    }
+}

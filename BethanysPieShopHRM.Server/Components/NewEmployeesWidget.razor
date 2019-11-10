@@ -1,0 +1,15 @@
+﻿@inherits NewEmployeesWidgetBase
+
+<div class="widget">
+    <h3>New Employees</h3>
+    <p>We're constantly expanding our team.  Make sure to say hello to our latest friends!</p>
+    @foreach (var employee in NewEmployees)
+    {
+        <div class="float-left employee-box">
+            <img src="images/professional.png" />
+            <p>@employee.FirstName @employee.LastName</p>
+        </div>
+    }
+
+    <p style="clear: both">Remmber, we offer referral bonuses!</p>
+</div>
