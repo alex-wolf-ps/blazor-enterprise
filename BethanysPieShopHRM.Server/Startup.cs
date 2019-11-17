@@ -35,6 +35,8 @@ namespace BethanysPieShopHRM.Server
             services.AddScoped<ICountryDataService, CountryDataService>();
             services.AddScoped<IJobCategoryDataService, JobCategoryDataService>();
             services.AddScoped<IExpenseService, ExpenseService>();
+            services.AddScoped<ITaskDataService, TaskDataService>();
+            services.AddScoped<IEmailService, EmailService>();
             services.AddBlazorContextMenu();
         }
 

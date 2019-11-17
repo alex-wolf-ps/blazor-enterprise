@@ -1,5 +1,6 @@
 ﻿@page "/"
 @using BethanysPieShopHRM.Shared
+@using BethanysPieShopHRM.Server.Services
 
 <div class="row"><div class="col-md-8"><h1 class="page-title">Welcome to Bethany's Pie Shop HRM!</h1></div></div>
 <br />
@@ -9,7 +10,7 @@
         <NewsWidget />
 
         <div class="widget">
-            <h3>Tasks</h3>
+            <h3>Tasks<button type="submit" @onclick="AddTask" class="btn btn-primary edit-btn float-right">Add Task</button></h3>
 
             <table class="table table-striped">
                 <thead>
@@ -32,69 +33,86 @@
             </table>
         </div>
     </div>
+
     <div class="col-md-4">
+        <NewEmployeesWidget />
+
         <div class="widget">
             <h3>Report a Concern</h3>
             <p>It's simple, safe and anonymous.</p>
 
-            <EditForm Model="@NewConcern">
-                <DataAnnotationsValidator />
-                <ValidationSummary />
-                <div class="form-group row">
-                    <label for="title" class="col-sm-3">Title: </label>
-                    <InputText id="title" class="form-control col-sm-8" @bind-Value="@NewConcern.Title" placeholder="Enter title"></InputText>
-                    <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => NewConcern.Title)" />
-                </div>
+            @if (!EmailSent)
+            {
+                <EditForm Model="@NewConcern" OnValidSubmit="SubmitConcern">
+                    <DataAnnotationsValidator />
+                    <div class="form-group">
+                        <label for="title">Title: </label>
+                        <InputText id="title" class="form-control" @bind-Value="@NewConcern.Title" placeholder="Enter title"></InputText>
+                        <ValidationMessage For="@(() => NewConcern.Title)" />
+                    </div>
 
-                <div class="form-group row">
-                    <label for="title" class="col-sm-3">Title: </label>
-                    <InputText id="title" class="form-control col-sm-8" @bind-Value="@NewConcern.Description" placeholder="Enter title"></InputText>
-                    <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => NewConcern.Description)" />
-                </div>
+                    <div class="form-group">
+                        <label for="title">Description: </label>
+                        <InputTextArea id="title" class="form-control" @bind-Value="@NewConcern.Description" placeholder="Enter title"></InputTextArea>
+                        <ValidationMessage For="@(() => NewConcern.Description)" />
+                    </div>
 
-                <button type="submit" class="btn btn-primary edit-btn float-right">Submit</button>
-            </EditForm>
+                    <button type="submit" class="btn btn-primary edit-btn">Submit</button>
+                </EditForm>
+            }
+            else
+            {
+                <p>Your message has been sent! You should receive a response from HR within 24 hours.</p>
+                <button type="button" @onclick="ResetForm" class="btn btn-primary edit-btn">Send Another</button>
+            }
         </div>
-
-        <NewEmployeesWidget />
     </div>
     </div>
 @code {
-    public List<HRTask> Tasks { get; set; } = new List<HRTask>();
 
     public Concern NewConcern { get; set; } = new Concern();
 
+    public List<HRTask> Tasks { get; set; } = new List<HRTask>();
 
-    protected async Task HandleValidSubmit()
-    {
-        // submit concern
-    }
+    public bool EmailSent { get; set; } = false;
+
+    [Parameter]
+    public int Count { get; set; }
+
+    [Inject]
+    public ITaskDataService taskService { get; set; }
+
+    [Inject]
+    public NavigationManager navManager { get; set; }
+
+    [Inject]
+    public IEmailService emailSerivce { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        Tasks = new List<HRTask>()
+        Tasks = (await taskService.GetAllTasks()).ToList();
+    }
+
+    public void AddTask()
+    {
+        navManager.NavigateTo("taskedit");
+    }
+
+    public void SubmitConcern()
+    {
+        var newEmail = new Email()
         {
-            new HRTask()
-            {
-                TaskId = 1,
-                Description = "Greet the new employees",
-                Title = "Say hello",
-                Status = Status.Open
-            },
-            new HRTask()
-            {
-                TaskId = 1,
-                Description = "Greet the new employees",
-                Title = "Say hello",
-                Status = Status.Open
-            },
-            new HRTask()
-            {
-                TaskId = 1,
-                Description = "Greet the new employees",
-                Title = "Say hello",
-                Status = Status.Open
-            }
+            Body = NewConcern.Description,
+            Subject = NewConcern.Title
         };
+
+        emailSerivce.SendEmail(newEmail);
+        EmailSent = true;
+    }
+
+    public void ResetForm()
+    {
+        NewConcern = new Concern();
+        EmailSent = false;
     }
 }

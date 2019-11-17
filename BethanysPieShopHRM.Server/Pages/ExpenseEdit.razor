@@ -3,87 +3,91 @@
 @using BethanysPieShopHRM.Shared
 @inherits ExpenseEditBase
 
-<h1 class="page-title">Add New Expense</h1>
+    <div class="entity-edit">
+        <h1 class="page-title">Add New Expense</h1>
 
-@if (!Saved)
-{
-<EditForm Model="@Expense" OnValidSubmit="@HandleValidSubmit">
+        @if (!Saved)
+        {
+            <EditForm Model="@Expense" OnValidSubmit="@HandleValidSubmit">
 
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    <div class="form-group row">
-        <label for="title" class="col-sm-3">Title: </label>
-        <InputText id="title" class="form-control col-sm-8" @bind-Value="@Expense.Title" placeholder="Enter title"></InputText>
-        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Expense.Title)" />
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+                <div class="form-group row">
+                    <label for="title" class="col-sm-3">Title: </label>
+                    <InputText id="title" class="form-control col-sm-8" @bind-Value="@Expense.Title" placeholder="Enter title"></InputText>
+                    <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Expense.Title)" />
+                </div>
+                <div class="form-group row">
+                    <label for="Description" class="col-sm-3">Description: </label>
+                    <InputTextArea id="Description" class="form-control col-sm-8" @bind-Value="@Expense.Description" placeholder="Enter Description"></InputTextArea>
+                    <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Expense.Description)" />
+                </div>
+                <div class="form-group row">
+                    <label for="Description" class="col-sm-3">Amount: </label>
+                    <InputNumber id="Description" class="form-control col-sm-8" @bind-Value="@Expense.Amount" placeholder="Enter Description"></InputNumber>
+                    <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Expense.Amount)" />
+                </div>
+
+                <div class="form-group row">
+                    <label for="expenseStats" class="col-sm-3">Expense Type: </label>
+                    <InputSelect id="expenseStatus" class="form-control col-sm-8" @bind-Value=@Expense.Status>
+                        <option value="@(ExpenseType.Training)">Training</option>
+                        <option value="@(ExpenseType.Travel)">Travel</option>
+                        <option value="@(ExpenseType.Transportation)">Transportation</option>
+                        <option value="@(ExpenseType.Food)">Food</option>
+                        <option value="@(ExpenseType.Hotel)">Hotel</option>
+                        <option value="@(ExpenseType.Office)">Office</option>
+                        <option value="@(ExpenseType.Other)">Other</option>
+                    </InputSelect>
+                </div>
+
+                <div class="form-group row">
+                    <label for="date" class="col-sm-3">Date: </label>
+                    <InputDate id="date" class="form-control col-sm-8" @bind-Value="@Expense.Date" placeholder="Enter date joined"></InputDate>
+                    <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Expense.Date)" />
+                </div>
+
+                <div class="form-group row">
+                    <label for="employee" class="col-sm-3">Employee: </label>
+                    <InputSelect id="employee" class="form-control col-sm-8" @bind-Value="@EmployeeId">
+                        @foreach (var employee in Employees)
+                            {
+                            <option value="@employee.EmployeeId">@employee.FirstName</option>
+                            }
+                        /**/
+                    </InputSelect>
+                    <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Expense.Currency)" />
+                </div>
+
+                <div class="form-group row">
+                    <label for="currency" class="col-sm-3">Currency: </label>
+                    <InputSelect id="currency" class="form-control col-sm-8" @bind-Value="@CurrencyId">
+                        @foreach (var currency in Currencies)
+                            {
+                            <option value="@currency.CurrencyId">@currency.Name</option>
+                            }
+                        /**/
+                    </InputSelect>
+                    <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Expense.Currency)" />
+                </div>
+
+                <div class="form-group row">
+                    <label for="expenseStats" class="col-sm-3">Status: </label>
+                    <InputSelect id="expenseStatus" class="form-control col-sm-8" @bind-Value=@Expense.Status>
+                        <option value="@(ExpenseStatus.Approved)">Approved</option>
+                        <option value="@(ExpenseStatus.Denied)">Denied</option>
+                        <option value="@(ExpenseStatus.Open)">Open</option>
+                        <option value="@(ExpenseStatus.Denied)">Denied</option>
+                    </InputSelect>
+                </div>
+
+                <button type="submit" class="btn btn-primary edit-btn">Save Expense</button>
+            </EditForm>
+        }
+        else
+        {
+            <div class="alert alert-info">@Message</div>
+            <a class="btn btn-outline-primary" @onclick="@NavigateToOverview">Back to overview</a>
+
+        }
     </div>
-    <div class="form-group row">
-        <label for="Description" class="col-sm-3">Description: </label>
-        <InputTextArea id="Description" class="form-control col-sm-8" @bind-Value="@Expense.Description" placeholder="Enter Description"></InputTextArea>
-        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Expense.Description)" />
-    </div>
-    <div class="form-group row">
-        <label for="Description" class="col-sm-3">Amount: </label>
-        <InputNumber id="Description" class="form-control col-sm-8" @bind-Value="@Expense.Amount" placeholder="Enter Description"></InputNumber>
-        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Expense.Amount)" />
-    </div>
-
-    <div class="form-group row">
-        <label for="expenseStats" class="col-sm-3">Expense Type: </label>
-        <InputSelect id="expenseStatus" class="form-control col-sm-8" @bind-Value=@Expense.Status>
-            <option value="@(ExpenseType.Training)">Training</option>
-            <option value="@(ExpenseType.Travel)">Travel</option>
-            <option value="@(ExpenseType.Transportation)">Transportation</option>
-            <option value="@(ExpenseType.Food)">Food</option>
-            <option value="@(ExpenseType.Hotel)">Hotel</option>
-            <option value="@(ExpenseType.Office)">Office</option>
-            <option value="@(ExpenseType.Other)">Other</option>
-        </InputSelect>
-    </div>
-
-    <div class="form-group row">
-        <label for="date" class="col-sm-3">Date: </label>
-        <InputDate id="date" class="form-control col-sm-8" @bind-Value="@Expense.Date" placeholder="Enter date joined"></InputDate>
-        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Expense.Date)" />
-    </div>
-
-    <div class="form-group row">
-        <label for="employee" class="col-sm-3">Employee: </label>
-        <InputSelect id="employee" class="form-control col-sm-8" @bind-Value="@EmployeeId">
-            @foreach (var employee in Employees)
-                {
-                <option value="@employee.EmployeeId">@employee.FirstName</option>
-                }
-        </InputSelect>
-        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Expense.Currency)" />
-    </div>
-
-    <div class="form-group row">
-        <label for="currency" class="col-sm-3">Currency: </label>
-        <InputSelect id="currency" class="form-control col-sm-8" @bind-Value="@CurrencyId">
-            @foreach (var currency in Currencies)
-                {
-                <option value="@currency.CurrencyId">@currency.Name</option>
-                }
-        </InputSelect>
-        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Expense.Currency)" />
-    </div>
-
-    <div class="form-group row">
-        <label for="expenseStats" class="col-sm-3">Status: </label>
-        <InputSelect id="expenseStatus" class="form-control col-sm-8" @bind-Value=@Expense.Status>
-            <option value="@(ExpenseStatus.Approved)">Approved</option>
-            <option value="@(ExpenseStatus.Denied)">Denied</option>
-            <option value="@(ExpenseStatus.Open)">Open</option>
-            <option value="@(ExpenseStatus.Denied)">Denied</option>
-        </InputSelect>
-    </div>
-
-    <button type="submit" class="btn btn-primary edit-btn">Save Expense</button>
-</EditForm>
-}
-else
-{
-    <div class="alert alert-info">@Message</div>
-    <a class="btn btn-outline-primary" @onclick="@NavigateToOverview">Back to overview</a>
-
-}

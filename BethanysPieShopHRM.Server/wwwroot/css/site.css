@@ -164,7 +164,7 @@ nav {
     bottom: 30px;
 }
 
-.employee-detail, .employee-edit {
+.employee-detail, .employee-edit, .entity-edit {
     padding: 15px;
     background-color: rgba(255, 255, 255, 0.6);
 }

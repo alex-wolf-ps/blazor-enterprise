@@ -16,7 +16,7 @@ namespace BethanysPieShopHRM.Api.Models
         public DbSet<Country> Countries { get; set; }
         public DbSet<JobCategory> JobCategories { get; set; }
         public DbSet<Expense> Expenses { get; set; }
-
+        public DbSet<HRTask> Tasks { get; set; }
         public DbSet<Currency> Currencies { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -111,7 +111,30 @@ namespace BethanysPieShopHRM.Api.Models
                 CurrencyId = 1,
                 EmployeeId = 1
             });
-
+            modelBuilder.Entity<HRTask>().HasData(new List<HRTask>()
+            {
+                new HRTask()
+                {
+                    HRTaskId = 1,
+                    Description = "Joe is having an issue with his account login, please look into it.",
+                    Title = "Employee Onboarding",
+                    Status = HRTaskStatus.Open
+                },
+                new HRTask()
+                {
+                    HRTaskId = 2,
+                    Description = "The fridge needs to be cleaned out and people are ignoring the weekly rotation.",
+                    Title = "Kitchen Duty",
+                    Status = HRTaskStatus.Open
+                },
+                new HRTask()
+                {
+                    HRTaskId = 3,
+                    Description = "Plan a welcome lunch for our new employees",
+                    Title = "Welcome Lunch",
+                    Status = HRTaskStatus.Open
+                }
+            });
         }
     }
 }

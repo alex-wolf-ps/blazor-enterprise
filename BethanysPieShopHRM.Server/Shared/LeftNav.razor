@@ -19,7 +19,19 @@
                     </NavLink>
                 </li>
                 <li>
-                    <a href="#">Tasks</a>
+                    <a href="#tasks" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tasks</a>
+                    <ul class="collapse list-unstyled sub-menu" id="tasks">
+                        <li>
+                            <NavLink href="/tasks">
+                                View tasks
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink href="/taskedit">
+                                Add new task
+                            </NavLink>
+                        </li>
+                    </ul>
                 </li>
                 <li>
                     <a href="#employees" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Employees</a>
