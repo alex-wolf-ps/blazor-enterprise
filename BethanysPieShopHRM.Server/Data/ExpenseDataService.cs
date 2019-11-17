@@ -9,11 +9,11 @@ using BethanysPieShopHRM.Shared;
 
 namespace BethanysPieShopHRM.Server.Services
 {
-    public class ExpenseService : IExpenseService
+    public class ExpenseDataService : IExpenseDataService
     {
         private readonly HttpClient _httpClient;
 
-        public ExpenseService(HttpClient httpClient)
+        public ExpenseDataService(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }

@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BethanysPieShopHRM.Server.Services;
+using BethanysPieShopHRM.Server.Data;
 
 namespace BethanysPieShopHRM.Server
 {
@@ -34,9 +35,10 @@ namespace BethanysPieShopHRM.Server
             services.AddScoped<IEmployeeDataService, EmployeeDataService>();
             services.AddScoped<ICountryDataService, CountryDataService>();
             services.AddScoped<IJobCategoryDataService, JobCategoryDataService>();
-            services.AddScoped<IExpenseService, ExpenseService>();
+            services.AddScoped<IExpenseDataService, ExpenseDataService>();
             services.AddScoped<ITaskDataService, TaskDataService>();
             services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<ISurveyDataService, SurveyDataService>();
             services.AddBlazorContextMenu();
         }
 

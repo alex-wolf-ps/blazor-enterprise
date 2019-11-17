@@ -18,6 +18,8 @@ namespace BethanysPieShopHRM.Api.Models
         public DbSet<Expense> Expenses { get; set; }
         public DbSet<HRTask> Tasks { get; set; }
         public DbSet<Currency> Currencies { get; set; }
+        public DbSet<Survey> Surveys { get; set; }
+        public DbSet<Answer> Answers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -12,7 +12,7 @@ namespace BethanysPieShopHRM.Server.Pages
     public class ExpenseOverviewBase: ComponentBase
     {
         [Inject]
-        public IExpenseService ExpenseService { get; set; }
+        public IExpenseDataService ExpenseService { get; set; }
 
         public List<Expense> Expenses { get; set; }
 

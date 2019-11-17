@@ -1,10 +1,15 @@
 using BethanysPieShopHRM.Api.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using System.Buffers;
+using System.Linq;
 
 namespace BethanysPieShopHRM.Api
 {
@@ -31,14 +36,18 @@ namespace BethanysPieShopHRM.Api
             services.AddScoped<IExpenseRepository, ExpenseRepository>();
             services.AddScoped<ICurrencyRepository, CurrencyRepository>();
             services.AddScoped<ITaskRepository, TaskRepository>();
+            services.AddScoped<ISurveyRepository, SurveyRepository>();
 
             services.AddCors(options =>
             {
                 options.AddPolicy("Open", builder => builder.AllowAnyOrigin().AllowAnyHeader());
             });
-
-            services.AddControllers();
-                //.AddJsonOptions(options => options.JsonSerializerOptions.ca);
+            services.AddControllers()
+                .AddNewtonsoftJson(options =>
+                {
+                    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,7 +64,7 @@ namespace BethanysPieShopHRM.Api
 
             app.UseAuthorization();
 
-           // app.UseCors("Open");
+            app.UseCors("Open");
 
             app.UseEndpoints(endpoints =>
             {

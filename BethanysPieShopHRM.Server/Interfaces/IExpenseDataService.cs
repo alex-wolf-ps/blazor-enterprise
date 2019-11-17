@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BethanysPieShopHRM.Server.Services
 { 
-    public interface IExpenseService
+    public interface IExpenseDataService
     {
         public Task<IEnumerable<Expense>> GetAllExpenses();
         public Task<Expense> GetExpenseById(int id);
