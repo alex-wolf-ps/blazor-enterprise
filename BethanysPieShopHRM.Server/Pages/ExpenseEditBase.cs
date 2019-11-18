@@ -27,7 +27,7 @@ namespace BethanysPieShopHRM.Server.Pages
         protected string EmployeeId = "1";
 
         [Parameter]
-        public int ExpenseId { get; set; }
+        public string ExpenseId { get; set; }
 
         public bool Saved = false;
 
@@ -41,8 +41,21 @@ namespace BethanysPieShopHRM.Server.Pages
         {
             Saved = false;
             Employees = (await EmployeeDataService.GetAllEmployees()).ToList();
-
             Currencies = (await ExpenseService.GetAllCurrencies()).ToList();
+
+            int.TryParse(ExpenseId, out var expenseId);
+
+            if(expenseId != 0)
+            {
+                Expense = await ExpenseService.GetExpenseById(int.Parse(ExpenseId));
+            } 
+            else
+            {
+                Expense = new Expense() { EmployeeId = 1, CurrencyId = 1, Status = ExpenseStatus.Open };
+            }
+
+            CurrencyId = Expense.CurrencyId.ToString();
+            EmployeeId = Expense.EmployeeId.ToString();
         }
 
         protected async Task HandleValidSubmit()
@@ -50,13 +63,11 @@ namespace BethanysPieShopHRM.Server.Pages
             Expense.EmployeeId = int.Parse(EmployeeId);
             Expense.CurrencyId = int.Parse(CurrencyId);
 
-            // Start with assumption it's approved since Manager is entering
-            Expense.Status = ExpenseStatus.Approved;
-
             var employee = await EmployeeDataService.GetEmployeeDetails(Expense.EmployeeId);
 
-            Expense.Amount *= Expense.Currency.USExchange;
+            Expense.Amount *= Currencies.FirstOrDefault(x => x.CurrencyId == Expense.CurrencyId).USExchange;
 
+            // We can handle certain requests automatically
             if (employee.IsOPEX)
             {
                 switch (Expense.ExpenseType)
@@ -78,7 +89,7 @@ namespace BethanysPieShopHRM.Server.Pages
                 }
             }
 
-            if (employee.IsFTE)
+            if (!employee.IsFTE)
             {
                 if (Expense.ExpenseType != ExpenseType.Training)
                 {
@@ -96,21 +107,23 @@ namespace BethanysPieShopHRM.Server.Pages
                 Expense.Status = ExpenseStatus.Pending;
             }
 
-            if(Expense.Status != ExpenseStatus.Denied)
+            if (Expense.ExpenseId == 0) // New 
             {
-                await ExpenseService.EditExpense(Expense);
+                await ExpenseService.AddExpense(Expense);
                 Message = "Saved!";
                 Saved = true;
             } 
             else
             {
-                Message = "Expense denied.";
+                await ExpenseService.UpdateExpense(Expense);
+                Message = "Saved!";
+                Saved = true;
             }
         }
 
         protected void NavigateToOverview()
         {
-            NavigationManager.NavigateTo("/employeeoverview");
+            NavigationManager.NavigateTo("/expenses");
         }
     }
 }

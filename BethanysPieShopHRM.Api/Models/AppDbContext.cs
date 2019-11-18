@@ -96,8 +96,16 @@ namespace BethanysPieShopHRM.Api.Models
 
             modelBuilder.Entity<Currency>().HasData(new Currency()
             {
-                Country = "Germany",
+                Country = "USA",
                 CurrencyId = 1,
+                Name = "US Dollars",
+                USExchange = 1
+            });
+
+            modelBuilder.Entity<Currency>().HasData(new Currency()
+            {
+                Country = "Germany",
+                CurrencyId = 2,
                 Name = "Euro",
                 USExchange = 1.14
             });

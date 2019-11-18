@@ -10,25 +10,25 @@ namespace BethanysPieShopHRM.Api.Controllers
     [ApiController]
     public class ExpenseController : Controller
     {
-        private readonly IExpenseRepository _ExpenseRepository;
+        private readonly IExpenseRepository _expenseRepository;
 
         public ExpenseController(IExpenseRepository ExpenseRepository)
         {
-            _ExpenseRepository = ExpenseRepository;
+            _expenseRepository = ExpenseRepository;
         }
 
         // GET: api/<controller>
         [HttpGet]
         public IActionResult GetExpenses()
         {
-            return Ok(_ExpenseRepository.GetAllExpenses());
+            return Ok(_expenseRepository.GetAllExpenses());
         }
 
         // GET api/<controller>/5
         [HttpGet("{id}")]
         public IActionResult GetExpenseById(int id)
         {
-            return Ok(_ExpenseRepository.GetExpenseById(id));
+            return Ok(_expenseRepository.GetExpenseById(id));
         }
 
         [HttpPost]
@@ -40,9 +40,29 @@ namespace BethanysPieShopHRM.Api.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var createdExpense = _ExpenseRepository.AddExpense(Expense);
+            var createdExpense = _expenseRepository.AddExpense(Expense);
 
             return Created("Expense", createdExpense);
         }
+
+        [HttpPut]
+        public IActionResult UpdateExpense([FromBody] Expense expense)
+        {
+            if (expense == null)
+                return BadRequest();
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var expenseToUpdate = _expenseRepository.GetExpenseById(expense.ExpenseId);
+
+            if (expenseToUpdate == null)
+                return NotFound();
+
+            _expenseRepository.UpdateExpense(expense);
+
+            return NoContent(); //success
+        }
+
     }
 }

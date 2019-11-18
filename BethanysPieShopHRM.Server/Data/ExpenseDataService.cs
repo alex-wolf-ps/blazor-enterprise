@@ -18,7 +18,7 @@ namespace BethanysPieShopHRM.Server.Services
             _httpClient = httpClient;
         }
 
-        public async Task<Expense> EditExpense(Expense editExpense)
+        public async Task<Expense> AddExpense(Expense editExpense)
         {
             var expenseJson =
                 new StringContent(JsonSerializer.Serialize(editExpense), Encoding.UTF8, "application/json");
@@ -31,6 +31,14 @@ namespace BethanysPieShopHRM.Server.Services
             }
 
             return null;
+        }
+
+        public async Task UpdateExpense(Expense expense)
+        {
+            var expenseJson =
+                new StringContent(JsonSerializer.Serialize(expense), Encoding.UTF8, "application/json");
+
+            await _httpClient.PutAsync("api/expense", expenseJson);
         }
 
         public async Task<IEnumerable<Expense>> GetAllExpenses()

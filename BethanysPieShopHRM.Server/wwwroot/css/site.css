@@ -74,7 +74,7 @@ nav {
 
 .menu {
     position: absolute;
-    margin-top: 240px;
+    margin-top: 210px;
 }
 
 #sidebar-wrapper {
@@ -148,7 +148,6 @@ nav {
 .table-btn {
     background-color: #23cfa7;
     border-color: #23cfa7;
-    border-radius: 50%;
 }
 
     .table-btn:hover, .table-btn:active {
@@ -227,4 +226,15 @@ nav {
 
 .employee-box {
     padding: 10px;
+}
+
+.img-responsive {
+    width: 100%;
+}
+
+.validation-errors {
+    list-style: none;
+    margin: 25px 0;
+    padding: 0;
+    color: red;
 }
