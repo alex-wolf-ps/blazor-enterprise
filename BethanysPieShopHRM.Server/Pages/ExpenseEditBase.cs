@@ -22,24 +22,18 @@ namespace BethanysPieShopHRM.Server.Pages
 
         public Expense Expense { get; set; } = new Expense();
 
-        //needed to bind to select to value
+        //needed to bind to select value
         protected string CurrencyId = "1";
         protected string EmployeeId = "1";
 
         [Parameter]
         public string ExpenseId { get; set; }
-
-        public bool Saved = false;
-
         public string Message { get; set; }
-
         public List<Currency> Currencies { get; set; } = new List<Currency>();
-
         public List<Employee> Employees { get; set; } = new List<Employee>();
 
         protected override async Task OnInitializedAsync()
         {
-            Saved = false;
             Employees = (await EmployeeDataService.GetAllEmployees()).ToList();
             Currencies = (await ExpenseService.GetAllCurrencies()).ToList();
 
@@ -51,7 +45,7 @@ namespace BethanysPieShopHRM.Server.Pages
             } 
             else
             {
-                Expense = new Expense() { EmployeeId = 1, CurrencyId = 1, Status = ExpenseStatus.Open };
+                Expense = new Expense() { EmployeeId = 1, CurrencyId = 1, Status = ExpenseStatus.Open, ExpenseType = ExpenseType.Other };
             }
 
             CurrencyId = Expense.CurrencyId.ToString();
@@ -110,14 +104,12 @@ namespace BethanysPieShopHRM.Server.Pages
             if (Expense.ExpenseId == 0) // New 
             {
                 await ExpenseService.AddExpense(Expense);
-                Message = "Saved!";
-                Saved = true;
+                NavigationManager.NavigateTo("/expenses");
             } 
             else
             {
                 await ExpenseService.UpdateExpense(Expense);
-                Message = "Saved!";
-                Saved = true;
+                NavigationManager.NavigateTo("/expenses");
             }
         }
 

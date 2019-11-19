@@ -47,6 +47,7 @@ namespace BethanysPieShopHRM.Api.Models
                 foundExpense.Title = expense.Title;
                 foundExpense.Status = expense.Status;
                 foundExpense.Date = expense.Date;
+                foundExpense.ExpenseType = expense.ExpenseType;
 
                 _appDbContext.SaveChanges();
 
