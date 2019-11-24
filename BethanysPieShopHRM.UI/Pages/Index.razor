@@ -75,12 +75,10 @@
 
     public Concern NewConcern { get; set; } = new Concern();
 
-    public List<HRTask> Tasks { get; set; } = new List<HRTask>();
-
     public bool EmailSent { get; set; } = false;
 
-    [Parameter]
-    public int Count { get; set; }
+    [Inject]
+    public IEmailService emailSerivce { get; set; }
 
     [Inject]
     public ITaskDataService taskService { get; set; }
@@ -88,8 +86,7 @@
     [Inject]
     public NavigationManager navManager { get; set; }
 
-    [Inject]
-    public IEmailService emailSerivce { get; set; }
+    public List<HRTask> Tasks { get; set; } = new List<HRTask>();
 
     protected override async Task OnInitializedAsync()
     {
