@@ -1,0 +1,53 @@
+﻿@page "/surveys"
+
+@using BethanysPieShopHRM.Shared
+@using BethanysPieShopHRM.UI.Services
+
+    <div class="entity-edit">
+        @if (Surveys == null)
+        {
+            <p><em>Loading...</em></p>
+        }
+        else
+        {
+            <h1 class="page-title">All Surveys</h1>
+            <br />
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Survey ID</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var survey in Surveys)
+                    {
+                        <tr>
+                            <td>@survey.SurveyId</td>
+                            <td>@survey.Title</td>
+                            <td>@survey.Description</td>
+                            <td>
+                                <a href="@($"survey/{survey.SurveyId}")" class="btn btn-primary table-btn">
+                                    Details
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+
+@code {
+    [Inject]
+    private ISurveyDataService surveyService { get; set; }
+
+    public List<Survey> Surveys { get; set; } = new List<Survey>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Surveys = (await surveyService.GetAllSurveys()).ToList();
+    }
+}

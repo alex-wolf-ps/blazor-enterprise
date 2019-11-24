@@ -1,0 +1,94 @@
+﻿@page "/taskedit"
+
+@using BethanysPieShopHRM.Shared
+@using BethanysPieShopHRM.UI.Services
+
+<div class="entity-edit">
+    <h1 class="page-title">Task Details</h1>
+
+    @if (!Saved)
+    {
+        <EditForm Model="@Task" OnValidSubmit="@HandleValidSubmit">
+
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <div class="form-group row">
+                <label for="title" class="col-sm-3">Title: </label>
+                <InputText id="title" class="form-control col-sm-8" @bind-Value="@Task.Title" placeholder="Enter title"></InputText>
+            </div>
+            <div class="form-group row">
+                <label for="Description" class="col-sm-3">Description: </label>
+                <InputTextArea id="Description" class="form-control col-sm-8" @bind-Value="@Task.Description" placeholder="Enter Description"></InputTextArea>
+            </div>
+
+            <div class="form-group row">
+                <label for="expenseStats" class="col-sm-3">Status: </label>
+                <InputSelect id="expenseStatus" class="form-control col-sm-8" @bind-Value=@Task.Status>
+                    <option value="@(HRTaskStatus.Open)">Open</option>
+                    <option value="@(HRTaskStatus.InProgress)">InProgress</option>
+                    <option value="@(HRTaskStatus.Assigned)">Assigned</option>
+                    <option value="@(HRTaskStatus.Blocked)">Blocked</option>
+                    <option value="@(HRTaskStatus.Complete)">Complete</option>
+                </InputSelect>
+            </div>
+
+            <div class="form-group row">
+                <label for="employee" class="col-sm-3">Assigned to: </label>
+                <InputSelect id="employee" class="form-control col-sm-8" @bind-Value="@EmployeeId">
+                    @foreach (var employee in Employees)
+                        {
+                        <option value="@employee.EmployeeId">@employee.FirstName</option>
+                        }
+                </InputSelect>
+            </div>
+
+            <button type="submit" class="btn btn-primary edit-btn">Add Task</button>
+        </EditForm>
+    }
+    else
+    {
+        <div class="alert alert-info">@Message</div>
+    }
+
+    @code {
+        public bool Saved { get; set; } = false;
+
+        public HRTask Task { get; set; } = new HRTask();
+
+        public string Message { get; set; }
+
+        protected string EmployeeId = "1";
+
+        [Inject]
+        private ITaskDataService taskService { get; set; }
+
+        [Inject]
+        private NavigationManager navManager { get; set; }
+
+        [Inject]
+        public IEmployeeDataService EmployeeDataService { get; set; }
+
+        public List<Employee> Employees { get; set; } = new List<Employee>();
+
+        protected override async Task OnInitializedAsync()
+        {
+            Saved = false;
+            Employees = (await EmployeeDataService.GetAllEmployees()).ToList();
+        }
+
+        protected async Task HandleValidSubmit()
+        {
+            Task.AssignedTo = int.Parse(EmployeeId);
+            var result = await taskService.AddTask(Task);
+
+            if (result != null)
+            {
+                navManager.NavigateTo("/");
+            }
+            else
+            {
+                Message = "An error has occured";
+            }
+        }
+    }
+</div>

@@ -1,0 +1,72 @@
+﻿@page "/surveyedit"
+@page "/surveyedit/{surveyId}"
+
+@using BethanysPieShopHRM.Shared
+@using BethanysPieShopHRM.UI.Services
+
+<div class="entity-edit">
+    <h1 class="page-title">Survey Details</h1>
+    <br />
+    <EditForm Model="@Survey" OnValidSubmit="@HandleValidSubmit">
+
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <div class="form-group row">
+            <label for="title" class="col-sm-3">Title: </label>
+            <InputText id="title" class="form-control col-sm-8" @bind-Value="@Survey.Title" placeholder="Enter title"></InputText>
+            <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Survey.Title)" />
+        </div>
+        <div class="form-group row">
+            <label for="Description" class="col-sm-3">Description: </label>
+            <InputTextArea id="Description" class="form-control col-sm-8" @bind-Value="@Survey.Description" placeholder="Enter Description"></InputTextArea>
+            <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Survey.Description)" />
+        </div>
+
+        <p>Note: Creating a survey will automatically send it out to employees.</p>
+
+        <button type="submit" class="btn btn-primary edit-btn">Create Survey</button>
+
+        <p>@Message</p>
+    </EditForm>
+</div>
+
+@code {
+    public bool Saved { get; set; } = false;
+
+    public Survey Survey { get; set; } = new Survey();
+
+    public string Message { get; set; }
+
+    [Inject]
+    private ISurveyDataService surveyService { get; set; }
+
+    [Inject]
+    private NavigationManager navManager { get; set; }
+
+    [Parameter]
+    public int SurveyId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Saved = false;
+
+        if (SurveyId != 0)
+        {
+            Survey = await surveyService.GetSurveyById(SurveyId);
+        }
+    }
+
+    protected async Task HandleValidSubmit()
+    {
+        var result = await surveyService.AddSurvey(Survey);
+
+        if (result != null)
+        {
+            navManager.NavigateTo("Surveys");
+        }
+        else
+        {
+            Message = "An error has occured";
+        }
+    }
+}
