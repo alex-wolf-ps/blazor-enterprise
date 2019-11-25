@@ -1,6 +1,7 @@
 ﻿@page "/tasks"
 @using BethanysPieShopHRM.Shared
 @using BethanysPieShopHRM.UI.Services
+@inherits TaskListBase
     
 <div id="tasks" class="widget">
 <h3>Tasks<button type="submit" @onclick="AddTask" class="btn btn-primary edit-btn float-right">Add Task</button></h3>
@@ -24,23 +25,3 @@
     </tbody>
 </table>
 </div>
-
-@code {
-    [Inject]
-    public ITaskDataService taskService { get; set; }
-
-    [Inject]
-    public NavigationManager navManager { get; set; }
-
-    public List<HRTask> Tasks { get; set; } = new List<HRTask>();
-
-    protected override async Task OnInitializedAsync()
-    {
-        Tasks = (await taskService.GetAllTasks()).ToList();
-    }
-
-    public void AddTask()
-    {
-        navManager.NavigateTo("taskedit");
-    }
-}
