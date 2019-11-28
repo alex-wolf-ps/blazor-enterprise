@@ -83,12 +83,9 @@ namespace BethanysPieShopHRM.UI.Pages
                 }
             }
 
-            if (!employee.IsFTE)
+            if (!employee.IsFTE && Expense.ExpenseType != ExpenseType.Training)
             {
-                if (Expense.ExpenseType != ExpenseType.Training)
-                {
-                    Expense.Status = ExpenseStatus.Denied;
-                }
+                Expense.Status = ExpenseStatus.Denied;
             }
 
             if (Expense.ExpenseType == ExpenseType.Food && Expense.Amount > 100)
