@@ -58,8 +58,9 @@ namespace BethanysPieShopHRM.UI.Pages
             Expense.CurrencyId = int.Parse(CurrencyId);
 
             var employee = await EmployeeDataService.GetEmployeeDetails(Expense.EmployeeId);
+            var currency = Currencies.FirstOrDefault(x => x.CurrencyId == Expense.CurrencyId);
 
-            Expense.Amount *= Currencies.FirstOrDefault(x => x.CurrencyId == Expense.CurrencyId).USExchange;
+            Expense.Amount *= currency.USExchange;
 
             // We can handle certain requests automatically
             if (employee.IsOPEX)
