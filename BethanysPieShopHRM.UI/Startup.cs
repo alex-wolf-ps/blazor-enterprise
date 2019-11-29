@@ -40,6 +40,7 @@ namespace BethanysPieShopHRM.UI
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<ISurveyDataService, SurveyDataService>();
             services.AddTransient<ICurrencyDataService, CurrencyDataService>();
+            services.AddTransient<IExpenseApprovalService, ExpenseApprovalService>();
             services.AddBlazorContextMenu();
         }
 
