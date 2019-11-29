@@ -27,13 +27,11 @@ namespace BethanysPieShopHRM.Shared
         public DateTime? Date { get; set; }
 
         [Required]
+        public int EmployeeId { get; set; }
+        [Required]
         public int CurrencyId { get; set; }
 
-        [Required]
-        public int EmployeeId { get; set; }
-
-        public Currency Currency { get; set; }
-
         public Employee Employee { get; set; }
+        public Currency Currency { get; set; }
     }
 }

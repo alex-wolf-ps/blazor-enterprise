@@ -52,16 +52,6 @@
             </InputSelect>
         </div>
 
-        <div class="form-group row">
-            <label for="currency" class="col-sm-3">Currency: </label>
-            <InputSelect id="currency" class="form-control col-sm-8" @bind-Value="@CurrencyId">
-                @foreach (var currency in Currencies)
-                {
-                    <option value="@currency.CurrencyId">@currency.Name</option>
-                }
-            </InputSelect>
-        </div>
-
         <button type="submit" class="btn btn-primary edit-btn">Save Expense</button>
     </EditForm>
 </div>

@@ -61,10 +61,44 @@ namespace BethanysPieShopHRM.UI.Pages
             Expense.CurrencyId = int.Parse(CurrencyId);
 
             var employee = await EmployeeDataService.GetEmployeeDetails(Expense.EmployeeId);
-            var currency = await CurrencyDataService.GetCurrencyById(Expense.CurrencyId);
 
-            // We can handle certain requests automatically
-            Expense.Amount *= currency.USExchange;
+            // We can deny certain expenses automatically
+            Expense.Status = ExpenseStatus.Pending;
+            if (!employee.IsFTE)
+            {
+                switch (Expense.ExpenseType)
+                {
+                    case ExpenseType.Conference:
+                        Expense.Status = ExpenseStatus.Denied;
+                        break;
+                    case ExpenseType.Hotel:
+                        Expense.Status = ExpenseStatus.Denied;
+                        break;
+                    case ExpenseType.Travel:
+                        Expense.Status = ExpenseStatus.Denied;
+                        break;
+                    case ExpenseType.Food:
+                        Expense.Status = ExpenseStatus.Denied;
+                        break;
+                }
+            } 
+            else
+            {
+                if (Expense.ExpenseType == ExpenseType.Food && Expense.Amount > 250)
+                {
+                    Expense.Status = ExpenseStatus.Denied;
+                }
+
+                if (Expense.Amount > 5000)
+                {
+                    Expense.Status = ExpenseStatus.Denied;
+                }
+            }
+
+            if(employee.JobCategory.JobCategoryName == "Sales" && Expense.ExpenseType == ExpenseType.Gift)
+            {
+                Expense.Status = ExpenseStatus.Denied;
+            }
 
             if (employee.IsOPEX)
             {
@@ -73,33 +107,10 @@ namespace BethanysPieShopHRM.UI.Pages
                     case ExpenseType.Conference:
                         Expense.Status = ExpenseStatus.Denied;
                         break;
-                    case ExpenseType.Transportation:
-                        Expense.Status = ExpenseStatus.Denied;
-                        break;
-                    case ExpenseType.Hotel:
+                    case ExpenseType.Training:
                         Expense.Status = ExpenseStatus.Denied;
                         break;
                 }
-
-                if (Expense.Status != ExpenseStatus.Denied)
-                {
-                    Expense.CoveredAmount = Expense.Amount / 2;
-                }
-            }
-
-            if (!employee.IsFTE && Expense.ExpenseType != ExpenseType.Training)
-            {
-                Expense.Status = ExpenseStatus.Denied;
-            }
-
-            if (Expense.ExpenseType == ExpenseType.Food && Expense.Amount > 100)
-            {
-                Expense.Status = ExpenseStatus.Pending;
-            }
-
-            if (Expense.Amount > 5000)
-            {
-                Expense.Status = ExpenseStatus.Pending;
             }
 
             if (Expense.ExpenseId == 0) // New 
