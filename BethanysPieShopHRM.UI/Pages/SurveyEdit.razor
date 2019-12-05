@@ -43,6 +43,9 @@
     [Inject]
     private NavigationManager navManager { get; set; }
 
+    [Inject]
+    public IEmailService emailService { get; set; }
+
     [Parameter]
     public int SurveyId { get; set; }
 
@@ -59,6 +62,8 @@
     protected async Task HandleValidSubmit()
     {
         var result = await surveyService.AddSurvey(Survey);
+
+        emailService.SendEmail();
 
         if (result != null)
         {

@@ -8,6 +8,6 @@ namespace BethanysPieShopHRM.UI.Services
 {
     public interface IEmailService
     {
-        void SendEmail(Email email);
+        void SendEmail();
     }
 }

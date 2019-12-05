@@ -32,7 +32,7 @@ namespace BethanysPieShopHRM.UI
             });
 
             //services.AddScoped<IEmployeeDataService, MockEmployeeDataService>();
-            services.AddTransient<IEmployeeDataService, EmployeeDataService>();
+            services.AddScoped<IEmployeeDataService, EmployeeDataService>();
             services.AddTransient<ICountryDataService, CountryDataService>();
             services.AddTransient<IJobCategoryDataService, JobCategoryDataService>();
             services.AddTransient<IExpenseDataService, ExpenseDataService>();
@@ -40,7 +40,7 @@ namespace BethanysPieShopHRM.UI
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<ISurveyDataService, SurveyDataService>();
             services.AddTransient<ICurrencyDataService, CurrencyDataService>();
-            services.AddTransient<IExpenseApprovalService, ExpenseApprovalService>();
+            services.AddTransient<IExpenseApprovalService, ManagerApprovalService>();
             services.AddBlazorContextMenu();
         }
 

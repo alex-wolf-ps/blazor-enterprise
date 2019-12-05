@@ -63,13 +63,7 @@
 
     public void SubmitConcern()
     {
-        var newEmail = new Email()
-        {
-            Body = NewConcern.Description,
-            Subject = NewConcern.Title
-        };
-
-        emailSerivce.SendEmail(newEmail);
+        emailSerivce.SendEmail();
         EmailSent = true;
     }
 

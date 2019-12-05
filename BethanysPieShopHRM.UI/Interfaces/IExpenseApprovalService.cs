@@ -1,9 +1,10 @@
 ﻿using BethanysPieShopHRM.Shared;
+using System.Threading.Tasks;
 
 namespace BethanysPieShopHRM.UI.Services
 {
     public interface IExpenseApprovalService
     {
-        ExpenseStatus GetExpenseStatus(Expense expense, Employee employee);
+        Task<ExpenseStatus> GetExpenseStatus(Expense expense);
     }
 }

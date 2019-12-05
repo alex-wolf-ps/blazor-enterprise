@@ -12,6 +12,8 @@ namespace BethanysPieShopHRM.UI.Services
         private List<Country> _countries;
         private List<JobCategory> _jobCategories;
 
+        public Employee SavedEmployee { get; set; }
+
         private IEnumerable<Employee> Employees
         {
             get

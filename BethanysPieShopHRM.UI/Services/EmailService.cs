@@ -8,7 +8,7 @@ namespace BethanysPieShopHRM.UI.Services
 {
     public class EmailService : IEmailService
     {
-        public void SendEmail(Email email)
+        public void SendEmail()
         {
             // Todo: Send emails
         }

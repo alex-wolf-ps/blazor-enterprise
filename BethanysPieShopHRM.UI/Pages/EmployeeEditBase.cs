@@ -23,6 +23,9 @@ namespace BethanysPieShopHRM.UI.Pages
         [Inject] 
         public NavigationManager NavigationManager { get; set; }
 
+        [Inject]
+        public IEmailService emailService { get; set; }
+
         [Parameter]
         public string EmployeeId { get; set; }
 
@@ -50,7 +53,11 @@ namespace BethanysPieShopHRM.UI.Pages
 
             int.TryParse(EmployeeId, out var employeeId);
 
-            if (employeeId == 0) //new employee is being created
+            if(EmployeeDataService.SavedEmployee != null)
+            {
+                Employee = EmployeeDataService.SavedEmployee;
+            }
+            else if (employeeId == 0) //new employee is being created
             {
                 //add some defaults
                 Employee = new Employee { CountryId = 1, JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now };
@@ -72,6 +79,9 @@ namespace BethanysPieShopHRM.UI.Pages
             if (Employee.EmployeeId == 0) //new
             {
                 var addedEmployee = await EmployeeDataService.AddEmployee(Employee);
+
+                emailService.SendEmail();
+
                 if (addedEmployee != null)
                 {
                     StatusClass = "alert-success";
@@ -108,6 +118,12 @@ namespace BethanysPieShopHRM.UI.Pages
             Message = "Deleted successfully";
 
             Saved = true;
+        }
+
+        protected void TempSave()
+        {
+            EmployeeDataService.SavedEmployee = Employee;
+            NavigationManager.NavigateTo("/employeeoverview");
         }
 
         protected void NavigateToOverview()

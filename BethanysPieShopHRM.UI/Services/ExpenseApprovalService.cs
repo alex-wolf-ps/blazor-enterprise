@@ -8,8 +8,17 @@ namespace BethanysPieShopHRM.UI.Services
 {
     public class ExpenseApprovalService : IExpenseApprovalService
     {
-        public ExpenseStatus GetExpenseStatus(Expense expense, Employee employee)
+        private readonly IEmployeeDataService _employeeService;
+
+        public ExpenseApprovalService(IEmployeeDataService employeeService)
         {
+            _employeeService = employeeService;
+        }
+
+        public async Task<ExpenseStatus> GetExpenseStatus(Expense expense)
+        {
+            var employee =  await _employeeService.GetEmployeeDetails(expense.EmployeeId);
+
             if (!employee.IsFTE)
             {
                 switch (expense.ExpenseType)

@@ -63,6 +63,9 @@
         private ITaskDataService taskService { get; set; }
 
         [Inject]
+        public IEmailService emailService { get; set; }
+
+        [Inject]
         private NavigationManager navManager { get; set; }
 
         [Inject]
@@ -80,6 +83,8 @@
         {
             Task.AssignedTo = int.Parse(EmployeeId);
             var result = await taskService.AddTask(Task);
+
+            emailService.SendEmail();
 
             if (result != null)
             {

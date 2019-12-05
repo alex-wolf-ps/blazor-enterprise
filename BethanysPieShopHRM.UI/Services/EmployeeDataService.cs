@@ -12,6 +12,8 @@ namespace BethanysPieShopHRM.UI.Services
     {
         private readonly HttpClient _httpClient;
 
+        public Employee SavedEmployee { get; set; }
+
         public EmployeeDataService(HttpClient httpClient)
         {
             _httpClient = httpClient;

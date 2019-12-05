@@ -68,7 +68,8 @@ namespace BethanysPieShopHRM.Api.Models
                     ExitDate = null,
                     JoinedDate = new DateTime(2015, 3, 1),
                     Latitude = 50.8503,
-                    Longitude = 4.3517
+                    Longitude = 4.3517,
+                    IsFTE = true
                 },
                 new Employee()
                 {
