@@ -4,6 +4,10 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <RazorLangVersion>3.0</RazorLangVersion>
     <RootNamespace>BethanysPieShopHRM.ComponentsLibrary</RootNamespace>
+    <PackageId>BethanysPieShopComponentsLibrary</PackageId>
+    <Authors>Developers</Authors>
+    <Company>BethanysPieShop</Company>
+    <Product>BethanysPieShopHRM</Product>
   </PropertyGroup>
 
   <ItemGroup>

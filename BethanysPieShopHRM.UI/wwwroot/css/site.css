@@ -238,3 +238,7 @@ nav {
     padding: 0;
     color: red;
 }
+
+.active {
+    font-weight: bold;
+}
