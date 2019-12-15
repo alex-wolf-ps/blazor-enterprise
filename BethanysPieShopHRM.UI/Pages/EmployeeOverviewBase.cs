@@ -26,14 +26,6 @@ namespace BethanysPieShopHRM.UI.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            try
-            {
-                throw new Exception("blah");
-            } 
-            catch(Exception e)
-            {
-                Logger.LogError("that wasn't good", e);
-            }
             Employees = (await EmployeeDataService.GetAllEmployees()).ToList();
         }
 
