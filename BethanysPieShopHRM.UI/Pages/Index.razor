@@ -1,5 +1,6 @@
 ﻿@page "/"
 @using BethanysPieShopHRM.Shared
+@using BethanysPieShopHRM.UI
 @using BethanysPieShopHRM.UI.Services
 
 <div class="row">
@@ -59,7 +60,7 @@
     [Inject]
     public IEmailService emailSerivce { get; set; }
 
-    
+
 
     public void SubmitConcern()
     {
