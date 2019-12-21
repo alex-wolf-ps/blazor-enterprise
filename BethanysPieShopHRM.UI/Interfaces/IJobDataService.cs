@@ -6,10 +6,10 @@ namespace BethanysPieShopHRM.UI.Services
 {
     public interface IJobDataService
     {
-        Task<Employee> AddJob(Job newJob);
+        Task<Job> AddJob(Job newJob);
         Task DeleteJob(int jobId);
         Task<IEnumerable<Job>> GetAllJobs();
-        Task<Employee> GetJobDetails(int jobId);
+        Task<Job> GetJobDetails(int jobId);
         Task UpdateJob(Job job);
     }
 }

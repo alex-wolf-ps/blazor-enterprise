@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BethanysPieShopHRM.UI.Services
 {
-    public class TaskDataService : ITaskDataService
+    public class TaskDataService : ITaskDataService, IPieShopAPI
     {
         private readonly HttpClient _httpClient;
 

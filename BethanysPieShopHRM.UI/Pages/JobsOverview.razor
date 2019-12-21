@@ -1,4 +1,4 @@
-﻿@page "/Jobs"
+﻿@page "/jobs"
 @inherits JobsOverviewBase
 <div class="entity-edit">
     <h1 class="page-title">All Jobs</h1>
@@ -12,26 +12,18 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Expense ID</th>
                     <th>Title</th>
-                    <th>Amount</th>
-                    <th>Status</th>
-                    <th></th>
+                    <th>Description</th>
+                    <th>Salary</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var expense in Jobs)
+                @foreach (var job in Jobs)
                 {
                 <tr>
-                    <td>@expense.ExpenseId</td>
-                    <td>@expense.Title</td>
-                    <td>@expense.Amount.ToString("C")</td>
-                    <td>@expense.Status</td>
-                    <td>
-                        <a href="@($"expenseedit/{expense.ExpenseId}")" class="btn btn-primary table-btn">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                    </td>
+                    <td>@job.Title</td>
+                    <td>@job.Description</td>
+                    <td>@job.Salary</td>
                 </tr>
                 }
             </tbody>

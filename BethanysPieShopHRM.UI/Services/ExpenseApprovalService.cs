@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BethanysPieShopHRM.UI.Services
 {
-    public class ExpenseApprovalService : IExpenseApprovalService
+    public class ExpenseApprovalService : IExpenseApprovalService, IPieShopAPI
     {
         private readonly IEmployeeDataService _employeeService;
 

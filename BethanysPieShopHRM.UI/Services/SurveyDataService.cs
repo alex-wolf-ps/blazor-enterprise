@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BethanysPieShopHRM.UI.Data
 {
-    public class SurveyDataService : ISurveyDataService
+    public class SurveyDataService : ISurveyDataService, IPieShopAPI
     {
         private readonly HttpClient _httpClient;
 

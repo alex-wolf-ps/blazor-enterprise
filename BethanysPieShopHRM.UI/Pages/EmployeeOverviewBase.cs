@@ -22,11 +22,21 @@ namespace BethanysPieShopHRM.UI.Pages
 
         public List<Employee> Employees { get; set; }
 
+        public string Message { get; set; }
+
         protected AddEmployeeDialog AddEmployeeDialog { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
-            Employees = (await EmployeeDataService.GetAllEmployees()).ToList();
+            try
+            {
+                Employees = (await EmployeeDataService.GetAllEmployees()).ToList();
+            } 
+            catch(Exception e)
+            {
+                Message = "Something went wrong.";
+            }
+            
         }
 
         public async void AddEmployeeDialog_OnDialogClose()

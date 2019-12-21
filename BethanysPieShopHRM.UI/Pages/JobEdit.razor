@@ -1,0 +1,46 @@
+﻿@page "/jobedit"
+@page "/jobedit/{JobId:int}"
+@using BethanysPieShopHRM.Shared
+@inherits JobEditBase
+
+<div class="entity-edit">
+    <h1 class="page-title">Add New Job</h1>
+    <EditForm Model="@Job" OnValidSubmit="@HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <div class="form-group row">
+            <label for="title" class="col-sm-3">Title: </label>
+            <InputText id="title" class="form-control col-sm-8" @bind-Value="@Job.Title" placeholder="Enter title"></InputText>
+        </div>
+        <div class="form-group row">
+            <label for="Description" class="col-sm-3">Description: </label>
+            <InputTextArea id="Description" class="form-control col-sm-8" @bind-Value="@Job.Description" placeholder="Enter Description"></InputTextArea>
+        </div>
+        <div class="form-group row">
+            <label for="Description" class="col-sm-3">Required Skills: </label>
+            <InputTextArea id="Description" class="form-control col-sm-8" @bind-Value="@Job.RequiredSkills" placeholder="Enter Description"></InputTextArea>
+        </div>
+
+        <div class="form-group row">
+            <label for="date" class="col-sm-3">Degree Requirements: </label>
+            <InputTextArea id="date" class="form-control col-sm-8" @bind-Value="@Job.DegreeRequirements" placeholder="Enter date joined"></InputTextArea>
+        </div>
+
+        <div class="form-group row">
+            <label for="date" class="col-sm-3">Contact Number: </label>
+            <InputText id="date" class="form-control col-sm-8" @bind-Value="@Job.ContactNumber" placeholder="Enter date joined"></InputText>
+        </div>
+
+        <div class="form-group row">
+            <label for="date" class="col-sm-3">Salary : </label>
+            <InputText id="date" class="form-control col-sm-8" @bind-Value="@Job.Salary" placeholder="Enter date joined"></InputText>
+        </div>
+
+        <div class="form-group row">
+            <label for="date" class="col-sm-3">Salary : </label>
+            <InputText id="date" class="form-control col-sm-8" @bind-Value="@Job.StartDate" placeholder="Enter date joined"></InputText>
+        </div>
+
+        <button type="submit" class="btn btn-primary edit-btn">Save Expense</button>
+    </EditForm>
+</div>
