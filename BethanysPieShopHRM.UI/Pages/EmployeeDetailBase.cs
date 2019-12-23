@@ -16,7 +16,7 @@ namespace BethanysPieShopHRM.UI.Pages
         public IJobCategoryDataService JobCategoryDataService{ get; set; }
 
         [Parameter]
-        public string EmployeeId { get; set; }
+        public int EmployeeId { get; set; }
 
         public List<Marker> MapMarkers { get; set; } = new List<Marker>();
 
@@ -26,7 +26,7 @@ namespace BethanysPieShopHRM.UI.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            Employee = await EmployeeDataService.GetEmployeeDetails(int.Parse(EmployeeId));
+            Employee = await EmployeeDataService.GetEmployeeDetails(EmployeeId);
 
             MapMarkers = new List<Marker>
             {
