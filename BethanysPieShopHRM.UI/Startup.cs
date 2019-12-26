@@ -27,7 +27,7 @@ namespace BethanysPieShopHRM.UI
             services.AddServerSideBlazor().AddCircuitOptions(options => { options.DetailedErrors = true; });
 
             var pieShopURI = new Uri("https://localhost:44340/");
-            var recruitingURI = new Uri("https://localhost:44323/");
+            var recruitingURI = new Uri("https://localhost:5001/");
 
             void RegisterTypedClient<TClient, TImplementation>(Uri apiBaseUrl) where TClient : class where TImplementation : class, TClient
             {

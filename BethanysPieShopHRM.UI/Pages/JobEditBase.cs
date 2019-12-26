@@ -27,7 +27,7 @@ namespace BethanysPieShopHRM.UI.Pages
         {
             if(JobId != 0)
             {
-                Job = await JobDataService.GetJobDetails(JobId);
+                Job = await JobDataService.GetJobById(JobId);
             }
         }
 
@@ -36,13 +36,13 @@ namespace BethanysPieShopHRM.UI.Pages
             if (Job.Id== 0) // New 
             {
                 await JobDataService.AddJob(Job);
-                NavigationManager.NavigateTo("/jobs");
             } 
             else
             {
                 await JobDataService.UpdateJob(Job);
-                NavigationManager.NavigateTo("/jobs");
             }
+
+            NavigationManager.NavigateTo("/jobs");
         }
 
         protected void NavigateToOverview()

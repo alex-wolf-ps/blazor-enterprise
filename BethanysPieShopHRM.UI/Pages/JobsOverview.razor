@@ -2,12 +2,7 @@
 @inherits JobsOverviewBase
 <div class="entity-edit">
     <h1 class="page-title">All Jobs</h1>
-
-    @if (Jobs == null)
-    {
-        <p><em>Loading...</em></p>
-    }
-    else
+    @if (Jobs != null)
     {
         <table class="table">
             <thead>
@@ -24,9 +19,14 @@
                     <td>@job.Title</td>
                     <td>@job.Description</td>
                     <td>@job.Salary</td>
+                    <td>
+                        <a href="@($"jobedit/{job.Id}")" class="btn btn-primary table-btn">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </td>
                 </tr>
                 }
             </tbody>
         </table>
     }
-    </div>
+</div>

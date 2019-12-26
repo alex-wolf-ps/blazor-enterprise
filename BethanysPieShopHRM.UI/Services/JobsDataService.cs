@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BethanysPieShopHRM.UI.Services
 {
-    public class JobsDataService : IJobDataService, IRecruitingAPI
+    public class JobsDataService : IJobDataService
     {
         private HttpClient _httpClient;
 
@@ -25,33 +25,36 @@ namespace BethanysPieShopHRM.UI.Services
             return await _httpClient.GetJsonAsync<Job[]>("jobs");
         }
 
-        public async Task<Job> GetJobDetails(int jobId)
+        public async Task<Job> GetJobById(int jobId)
         {
-            return null;
+            var jobs = await _httpClient.GetJsonAsync<Job[]>("jobs");
+            return jobs.FirstOrDefault(x => x.Id == jobId);
         }
 
-        public async Task<Job> AddJob(Job newJob)
+        public async Task AddJob(Job newJob)
         {
-            var dictionary = newJob.GetType().GetProperties().ToDictionary(p => p.Name, p => p.GetValue(newJob).ToString());
+            //var dictionary = newJob.GetType().GetProperties().ToDictionary(p => p.Name, p => p.GetValue(newJob).ToString());
 
-            var requestMessage = new HttpRequestMessage()
-            {
-                Method = new HttpMethod("POST"),
-                RequestUri = new Uri("https://localhost:44323/jobs"),
-                Content = new FormUrlEncodedContent(dictionary)
-            };
+            //var requestMessage = new HttpRequestMessage()
+            //{
+            //    Method = new HttpMethod("POST"),
+            //    RequestUri = new Uri("https://localhost:44323/jobs"),
+            //    Content = new FormUrlEncodedContent(dictionary)
+            //};
 
-            requestMessage.Headers.Add("x-custom", "secret code");
+            //requestMessage.Headers.Add("x-custom", "secret code");
 
-            var response = await _httpClient.SendAsync(requestMessage);
-            var responseBody = await response.Content.ReadAsStringAsync();
+            //var response = await _httpClient.SendAsync(requestMessage);
+            //var responseBody = await response.Content.ReadAsStringAsync();
 
-            return JsonSerializer.Deserialize<Job>(responseBody);
+            //return JsonSerializer.Deserialize<Job>(responseBody);
+
+            await _httpClient.PostJsonAsync("jobs", newJob);
         }
 
-        public async Task UpdateJob(Job job)
+        public async Task UpdateJob(Job updatedJob)
         {
-
+            await _httpClient.PutJsonAsync("jobs", updatedJob);
         }
 
         public async Task DeleteJob(int jobId)
