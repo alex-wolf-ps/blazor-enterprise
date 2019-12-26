@@ -48,7 +48,7 @@ namespace BethanysPieShopHRM.UI
 
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IExpenseApprovalService, ManagerApprovalService>();
-            services.AddBlazorContextMenu();
+            services.AddProtectedBrowserStorage();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
