@@ -21,6 +21,9 @@
                             <td>@job.Description</td>
                             <td>@job.Salary</td>
                             <td>
+                                <a href="@($"jobdetail/{job.Id}")" class="btn btn-primary table-btn">
+                                    <i class="fas fa-info-circle"></i>
+                                </a>
                                 <a href="@($"jobedit/{job.Id}")" class="btn btn-primary table-btn">
                                     <i class="fas fa-edit"></i>
                                 </a>

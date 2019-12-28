@@ -12,13 +12,6 @@ namespace BethanysPieShopHRM.UI.Services
 {
     public class JobsDataService : IJobDataService
     {
-        private HttpClient _httpClient;
-
-        public JobsDataService(HttpClient client)
-        {
-            _httpClient = client;
-        }
-
         public async Task<IEnumerable<Job>> GetAllJobs()
         {
             return new List<Job>();
@@ -26,33 +19,15 @@ namespace BethanysPieShopHRM.UI.Services
 
         public async Task<Job> GetJobById(int jobId)
         {
-            return new Job(); ;
+            return new Job();
         }
 
         public async Task AddJob(Job newJob)
         {
-            //var dictionary = newJob.GetType().GetProperties().ToDictionary(p => p.Name, p => p.GetValue(newJob).ToString());
-
-            //var requestMessage = new HttpRequestMessage()
-            //{
-            //    Method = new HttpMethod("POST"),
-            //    RequestUri = new Uri("https://localhost:44323/jobs"),
-            //    Content = new FormUrlEncodedContent(dictionary)
-            //};
-
-            //requestMessage.Headers.Add("x-custom", "secret code");
-
-            //var response = await _httpClient.SendAsync(requestMessage);
-            //var responseBody = await response.Content.ReadAsStringAsync();
-
-            //return JsonSerializer.Deserialize<Job>(responseBody);
-
-            return;
         }
 
         public async Task UpdateJob(Job updatedJob)
         {
-            return;
         }
 
         public async Task DeleteJob(int jobId)
