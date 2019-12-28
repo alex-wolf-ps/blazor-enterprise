@@ -21,14 +21,12 @@ namespace BethanysPieShopHRM.UI.Services
 
         public async Task<IEnumerable<Job>> GetAllJobs()
         {
-
-            return await _httpClient.GetJsonAsync<Job[]>("jobs");
+            return new List<Job>();
         }
 
         public async Task<Job> GetJobById(int jobId)
         {
-            var jobs = await _httpClient.GetJsonAsync<Job[]>("jobs");
-            return jobs.FirstOrDefault(x => x.Id == jobId);
+            return new Job(); ;
         }
 
         public async Task AddJob(Job newJob)
@@ -49,12 +47,12 @@ namespace BethanysPieShopHRM.UI.Services
 
             //return JsonSerializer.Deserialize<Job>(responseBody);
 
-            await _httpClient.PostJsonAsync("jobs", newJob);
+            return;
         }
 
         public async Task UpdateJob(Job updatedJob)
         {
-            await _httpClient.PutJsonAsync("jobs", updatedJob);
+            return;
         }
 
         public async Task DeleteJob(int jobId)

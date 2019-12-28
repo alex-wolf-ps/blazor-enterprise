@@ -25,7 +25,7 @@ namespace BethanysPieShopHRM.UI
         {
             services.AddRazorPages();
             services.AddServerSideBlazor().AddCircuitOptions(options => { options.DetailedErrors = true; });
-
+            
             var pieShopURI = new Uri("https://localhost:44340/");
             var recruitingURI = new Uri("https://localhost:5001/");
 
