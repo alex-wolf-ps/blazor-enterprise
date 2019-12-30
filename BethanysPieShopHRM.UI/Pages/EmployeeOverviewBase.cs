@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using BethanysPieShopHRM.UI.Components;
 using BethanysPieShopHRM.UI.Services;
 using BethanysPieShopHRM.Shared;
-using BethanysPieShopHRM.UI.Components;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Logging;
 

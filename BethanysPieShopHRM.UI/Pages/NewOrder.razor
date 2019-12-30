@@ -1,0 +1,35 @@
+﻿@page "/neworder"
+
+@using BethanysPieShopHRM.Shared
+
+<div class="entity-edit">
+    <h1 class="page-title">New Order</h1>
+    <EditForm Model="@Order" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
+        <ObjectGraphDataAnnotationsValidator />
+        <ValidationSummary />
+        <div class="form-group row">
+            <label for="title" class="col-sm-3">Title: </label>
+            <InputText id="title" class="form-control col-sm-8" @bind-Value="@Order.Title" placeholder="Enter title"></InputText>
+        </div>
+        <div class="form-group row">
+            <label for="title" class="col-sm-3">Street: </label>
+            <InputText id="street" class="form-control col-sm-8" @bind-Value="@Order.DeliveryAddress.Street" placeholder="Enter street"></InputText>
+        </div>
+
+        <button type="submit" class="btn btn-primary edit-btn">Save</button>
+    </EditForm>
+</div>
+
+@code {
+    public Order Order { get; set; } = new Order() { DeliveryAddress = new Address() };
+
+    protected async Task HandleValidSubmit()
+    {
+        var test = "";
+    }
+
+    protected async Task HandleInvalidSubmit()
+    {
+        var test = "";
+    }
+}
