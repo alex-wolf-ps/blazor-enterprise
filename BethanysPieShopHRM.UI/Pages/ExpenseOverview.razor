@@ -1,5 +1,16 @@
 ﻿@page "/expenses"
+@using Blazor.FlexGrid.Components.Configuration
+@using BethanysPieShopHRM.Shared
+
 @inherits ExpenseOverviewBase
+
+@inject BlazorComponentColumnCollection<Expense> Collection
+
+@{
+    RenderFragment<Expense> expenseTemp = (expense) => @<a class="btn btn-secondary" href="/expenseedit/@expense.ExpenseId">Edit</a>;
+    Collection.AddColumnValueRenderFunction(w => w.Currency, expenseTemp);
+}
+
 <div class="entity-edit">
     <h1 class="page-title">All Expenses</h1>
 
@@ -9,32 +20,34 @@
     }
     else
     {
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Expense ID</th>
-                    <th>Title</th>
-                    <th>Amount</th>
-                    <th>Status</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var expense in Expenses)
-                {
-                <tr>
-                    <td>@expense.ExpenseId</td>
-                    <td>@expense.Title</td>
-                    <td>@expense.Amount.ToString("C")</td>
-                    <td>@expense.Status</td>
-                    <td>
-                        <a href="@($"expenseedit/{expense.ExpenseId}")" class="btn btn-primary table-btn">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                    </td>
-                </tr>
-                }
-            </tbody>
-        </table>
+        <Blazor.FlexGrid.Components.GridView DataAdapter="@Expenses" PageSize="3"></Blazor.FlexGrid.Components.GridView>
+
+        @*<table class="table">
+                <thead>
+                    <tr>
+                        <th>Expense ID</th>
+                        <th>Title</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var expense in Expenses)
+                    {
+                    <tr>
+                        <td>@expense.ExpenseId</td>
+                        <td>@expense.Title</td>
+                        <td>@expense.Amount.ToString("C")</td>
+                        <td>@expense.Status</td>
+                        <td>
+                            <a href="@($"expenseedit/{expense.ExpenseId}")" class="btn btn-primary table-btn">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>*@
     }
-    </div>
+</div>
