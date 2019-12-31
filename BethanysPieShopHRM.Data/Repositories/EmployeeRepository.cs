@@ -21,7 +21,8 @@ namespace BethanysPieShopHRM.Api.Models
 
         public Employee GetEmployeeById(int employeeId)
         {
-            return _appDbContext.Employees.Include(x => x.JobCategory).FirstOrDefault(c => c.EmployeeId == employeeId);
+            var employee = _appDbContext.Employees.Include(x => x.Address).Include(x => x.JobCategory).FirstOrDefault(c => c.EmployeeId == employeeId);
+            return employee;
         }
 
         public Employee AddEmployee(Employee employee)
@@ -37,18 +38,18 @@ namespace BethanysPieShopHRM.Api.Models
 
             if (foundEmployee != null)
             {
-                foundEmployee.CountryId = employee.CountryId;
                 foundEmployee.MaritalStatus = employee.MaritalStatus;
                 foundEmployee.BirthDate = employee.BirthDate;
-                foundEmployee.City = employee.City;
+                foundEmployee.Address.City = employee.Address.City;
                 foundEmployee.Email = employee.Email;
                 foundEmployee.FirstName = employee.FirstName;
                 foundEmployee.LastName = employee.LastName;
                 foundEmployee.Gender = employee.Gender;
                 foundEmployee.PhoneNumber = employee.PhoneNumber;
                 foundEmployee.Smoker = employee.Smoker;
-                foundEmployee.Street = employee.Street;
-                foundEmployee.Zip = employee.Zip;
+                foundEmployee.Address.Street = employee.Address.Street;
+                foundEmployee.Address.Zip = employee.Address.Zip;
+                foundEmployee.Address.Country = employee.Address.Country;
                 foundEmployee.JobCategoryId = employee.JobCategoryId;
                 foundEmployee.Comment = employee.Comment;
                 foundEmployee.ExitDate = employee.ExitDate;

@@ -9,8 +9,7 @@
         <h1 class="page-title">Details for @Employee.FirstName @Employee.LastName</h1>
 
         <EditForm Model="@Employee" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
-
-            <DataAnnotationsValidator />
+            <ObjectGraphDataAnnotationsValidator />
             <ValidationSummary />
             <div class="form-group row">
                 <label for="lastName" class="col-sm-3">Last name: </label>
@@ -37,32 +36,26 @@
 
             <div class="form-group row">
                 <label for="street" class="col-sm-3">Street: </label>
-                <InputText id="street" class="form-control col-sm-8" @bind-Value="@Employee.Street" placeholder="Enter street"></InputText>
-                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.Street)" />
+                <InputText id="street" class="form-control col-sm-8" @bind-Value="@Employee.Address.Street" placeholder="Enter street"></InputText>
+                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.Address.Street)" />
             </div>
 
             <div class="form-group row">
                 <label for="zip" class="col-sm-3">Zip code: </label>
-                <InputText id="zip" class="form-control col-sm-8" @bind-Value="@Employee.Zip" placeholder="Enter zip code"></InputText>
-                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.Zip)" />
+                <InputText id="zip" class="form-control col-sm-8" @bind-Value="@Employee.Address.Zip" placeholder="Enter zip code"></InputText>
+                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.Address.Zip)" />
             </div>
 
             <div class="form-group row">
                 <label for="city" class="col-sm-3">City: </label>
-                <InputText id="city" class="form-control col-sm-8" @bind-Value="@Employee.City" placeholder="Enter city"></InputText>
-                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.City)" />
+                <InputText id="city" class="form-control col-sm-8" @bind-Value="@Employee.Address.City" placeholder="Enter city"></InputText>
+                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.Address.City)" />
             </div>
 
             <div class="form-group row">
-                <label for="country" class="col-sm-3">Country: </label>
-                <InputSelect id="country" class="form-control col-sm-8" @bind-Value="@CountryId">
-                    @foreach (var country in Countries)
-                        {
-                        <option value="@country.CountryId">@country.Name</option>
-                        }
-                    /**/
-                </InputSelect>
-                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.Country)" />
+                <label for="city" class="col-sm-3">Country: </label>
+                <InputText id="city" class="form-control col-sm-8" @bind-Value="@Employee.Address.Country" placeholder="Enter country"></InputText>
+                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.Address.Country)" />
             </div>
 
             <div class="form-group row">
@@ -97,6 +90,7 @@
                         {
                         <option value="@jobCategory.JobCategoryId">@jobCategory.JobCategoryName</option>
                         }
+                    /**/
                     /**/
                 </InputSelect>
             </div>
@@ -146,7 +140,7 @@
                 </a>
             }
 
-            <a class="btn btn-outline-secondary edit-outline-btn 
+            <a class="btn btn-outline-secondary edit-outline-btn
                float-right" @onclick="@TempSave">Temporary Save</a>
 
         </EditForm>

@@ -21,8 +21,8 @@ namespace BethanysPieShopHRM.UI.Pages
         public List<Marker> MapMarkers { get; set; } = new List<Marker>();
 
         protected string JobCategory = string.Empty;
-       
-        public Employee Employee { get; set; } = new Employee();
+
+        public Employee Employee { get; set; } = new Employee() { Address = new Address() };
 
         protected override async Task OnInitializedAsync()
         {

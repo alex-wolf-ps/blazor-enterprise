@@ -35,10 +35,9 @@ namespace BethanysPieShopHRM.UI.Pages
 
         public InputText LastNameInputText { get; set; }
 
-        public Employee Employee { get; set; } = new Employee();
+        public Employee Employee { get; set; } = new Employee() { Address = new Address() };
 
         //needed to bind to select to value
-        protected string CountryId = string.Empty;
         protected string JobCategoryId = string.Empty;
 
         //used to store state of screen
@@ -66,20 +65,18 @@ namespace BethanysPieShopHRM.UI.Pages
             else if (employeeId == 0) //new employee is being created
             {
                 //add some defaults
-                Employee = new Employee { CountryId = 1, JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now };
+                Employee = new Employee { Address = new Address(), JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now };
             }
             else
             {
                 Employee = await EmployeeDataService.GetEmployeeDetails(int.Parse(EmployeeId));
             }
 
-            CountryId = Employee.CountryId.ToString();
             JobCategoryId = Employee.JobCategoryId.ToString();
         }
 
         protected async Task HandleValidSubmit()
         {
-            Employee.CountryId = int.Parse(CountryId);
             Employee.JobCategoryId = int.Parse(JobCategoryId);
 
             if (Employee.EmployeeId == 0) //new
