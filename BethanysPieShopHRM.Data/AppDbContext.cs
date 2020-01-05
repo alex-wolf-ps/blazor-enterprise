@@ -84,30 +84,33 @@ namespace BethanysPieShopHRM.Api.Models
             modelBuilder.Entity<Address>().HasData(new Address()
             {
                 AddressId = 1,
-                City = "Brussels",
-                Street = "Grote Markt 1",
-                Zip = "1000",
-                Country = "Belgium",
+                City = "Farmington",
+                Street = "182 W Union Ave",
+                Zip = "84025",
+                State = "Utah",
+                Country = "United States",
                 EmployeeId = 1,
-                Latitude = 50.8503,
-                Longitude = 4.3517
+                Latitude = 40.7608,
+                Longitude = -111.8910
             });
             modelBuilder.Entity<Address>().HasData(new Address()
             {
                 AddressId = 2,
-                City = "Brussels",
-                Street = "Grote Markt 1",
-                Zip = "1000",
-                Country = "Belgium",
+                City = "Farmington",
+                Street = "182 W Union Ave",
+                Zip = "84025",
+                State = "Utah",
+                Country = "United States",
                 EmployeeId = 2,
-                    Latitude = 50.8503,
-                Longitude = 4.3517
+                Latitude = 40.7608,
+                Longitude = -111.8910
             });
 
             modelBuilder.Entity<Contact>().HasData(new Contact()
             {
                 ContactId = 1,
-                Email = "test@test.com",
+                PersonalEmail = "test@test.com",
+                CompanyEmail = "bethany@bethanyspieshop.com",
                 PhoneNumber = "555-123-1234",
                 EmergencyName = "Bob",
                 EmergencyPhoneNumber = "555-234-4567",
@@ -117,7 +120,8 @@ namespace BethanysPieShopHRM.Api.Models
             modelBuilder.Entity<Contact>().HasData(new Contact()
             {
                 ContactId = 2,
-                Email = "sample@test.com",
+                PersonalEmail = "sample@test.com",
+                CompanyEmail = "bob@bethanyspieshop.com",
                 PhoneNumber = "555-123-1234",
                 EmergencyName = "Tim",
                 EmergencyPhoneNumber = "555-123-4567",

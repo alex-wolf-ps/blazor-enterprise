@@ -56,6 +56,7 @@ namespace BethanysPieShopHRM.Api.Models
                 // Address
                 foundEmployee.Address.City = employee.Address.City;
                 foundEmployee.Address.Street = employee.Address.Street;
+                foundEmployee.Address.State = employee.Address.State;
                 foundEmployee.Address.Zip = employee.Address.Zip;
                 foundEmployee.Address.Country = employee.Address.Country;
                 foundEmployee.Address.Latitude = employee.Address.Latitude;
@@ -65,7 +66,8 @@ namespace BethanysPieShopHRM.Api.Models
                 foundEmployee.Contact.PhoneNumber = employee.Contact.PhoneNumber;
                 foundEmployee.Contact.EmergencyName = employee.Contact.EmergencyName;
                 foundEmployee.Contact.EmergencyPhoneNumber = employee.Contact.EmergencyPhoneNumber;
-                foundEmployee.Contact.Email = employee.Contact.Email;
+                foundEmployee.Contact.PersonalEmail = employee.Contact.PersonalEmail;
+                foundEmployee.Contact.CompanyEmail = employee.Contact.CompanyEmail;
 
                 _appDbContext.SaveChanges();
 

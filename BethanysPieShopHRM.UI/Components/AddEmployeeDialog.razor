@@ -33,8 +33,8 @@
 
                         <div class="form-group">
                             <label for="email">Email: </label>
-                            <InputText id="email" class="form-control" @bind-Value="@Employee.Contact.Email" placeholder="Enter email"></InputText>
-                            <ValidationMessage For="@(() => Employee.Contact.Email)" />
+                            <InputText id="email" class="form-control" @bind-Value="@Employee.Contact.PersonalEmail" placeholder="Enter email"></InputText>
+                            <ValidationMessage For="@(() => Employee.Contact.PersonalEmail)" />
                         </div>
                         <button type="submit" class="btn btn-primary">Save employee</button>
                         <a class="btn btn-outline-primary" @onclick="@Close">Close</a>
