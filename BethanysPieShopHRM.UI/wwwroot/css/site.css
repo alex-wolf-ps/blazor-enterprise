@@ -242,3 +242,8 @@ nav {
 .active {
     font-weight: bold;
 }
+
+.validation-message {
+    color: red;
+    margin-left: 25px;
+}
