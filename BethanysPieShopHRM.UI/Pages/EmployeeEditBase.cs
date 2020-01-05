@@ -57,13 +57,7 @@ namespace BethanysPieShopHRM.UI.Pages
 
             int.TryParse(EmployeeId, out var employeeId);
 
-            var savedEmployee = await LocalStorageService.GetAsync<Employee>("Employee");
-
-            if(savedEmployee != null && employeeId == 0)
-            {
-                Employee = savedEmployee;
-            }
-            else if (employeeId != 0) //new employee is being created
+            if (employeeId != 0) //new employee is being created
             {
                 Employee = await EmployeeDataService.GetEmployeeDetails(int.Parse(EmployeeId));
             }
@@ -117,12 +111,6 @@ namespace BethanysPieShopHRM.UI.Pages
             Message = "Deleted successfully";
 
             Saved = true;
-        }
-
-        protected async void TempSave()
-        {
-            await LocalStorageService.SetAsync("Employee", Employee);
-            NavigationManager.NavigateTo("/employeeoverview");
         }
 
         protected void NavigateToOverview()

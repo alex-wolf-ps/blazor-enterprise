@@ -20,7 +20,8 @@ namespace BethanysPieShopHRM.Api.Models
         public DbSet<Currency> Currencies { get; set; }
         public DbSet<Survey> Surveys { get; set; }
         public DbSet<Answer> Answers { get; set; }
-        public DbSet<Address> Address { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
