@@ -19,7 +19,7 @@
             <div class="form-group row">
                 <label for="firstName" class="col-sm-3">First name: </label>
                 <InputText id="firstName" class="form-control col-sm-8" @bind-Value="@Employee.FirstName" placeholder="Enter first name"></InputText>
-                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.FirstName)" />
+                <ValidationMessage For="@(() => Employee.FirstName)" />
             </div>
 
             <div class="form-group row">
@@ -30,8 +30,14 @@
 
             <div class="form-group row">
                 <label for="email" class="col-sm-3">Email: </label>
-                <InputText id="email" class="form-control col-sm-8" @bind-Value="@Employee.Email" placeholder="Enter email"></InputText>
-                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.Email)" />
+                <InputText id="email" class="form-control col-sm-8" @bind-Value="@Employee.Contact.Email" placeholder="Enter email"></InputText>
+                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.Contact.Email)" />
+            </div>
+
+            <div class="form-group row">
+                <label for="email" class="col-sm-3">Email: </label>
+                <InputText id="email" class="form-control col-sm-8" @bind-Value="@Employee.Contact.Email" placeholder="Enter email"></InputText>
+                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.Contact.Email)" />
             </div>
 
             <div class="form-group row">
@@ -60,20 +66,32 @@
 
             <div class="form-group row">
                 <label for="phonenumber" class="col-sm-3">Phone number: </label>
-                <InputText id="phonenumber" class="form-control col-sm-8" @bind-Value="@Employee.PhoneNumber" placeholder="Enter phone number"></InputText>
-                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.PhoneNumber)" />
+                <InputText id="phonenumber" class="form-control col-sm-8" @bind-Value="@Employee.Contact.PhoneNumber" placeholder="Enter phone number"></InputText>
+                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.Contact.PhoneNumber)" />
+            </div>
+
+            <div class="form-group row">
+                <label for="phonenumber" class="col-sm-3">Emergency contact name: </label>
+                <InputText id="phonenumber" class="form-control col-sm-8" @bind-Value="@Employee.Contact.EmergencyName" placeholder="Enter contact name"></InputText>
+                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.Contact.EmergencyName)" />
+            </div>
+
+            <div class="form-group row">
+                <label for="phonenumber" class="col-sm-3">Emergency contact phone: </label>
+                <InputText id="phonenumber" class="form-control col-sm-8" @bind-Value="@Employee.Contact.EmergencyPhoneNumber" placeholder="Enter contact name"></InputText>
+                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.Contact.EmergencyPhoneNumber)" />
             </div>
 
             <div class="form-group row">
                 <label for="longitude" class="col-sm-3">Longitude: </label>
-                <InputNumber id="longitude" class="form-control col-sm-8" @bind-Value="@Employee.Longitude"></InputNumber>
-                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.Longitude)" />
+                <InputNumber id="longitude" class="form-control col-sm-8" @bind-Value="@Employee.Address.Longitude"></InputNumber>
+                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.Address.Longitude)" />
             </div>
 
             <div class="form-group row">
                 <label for="latitude" class="col-sm-3">Latitude: </label>
-                <InputNumber id="latitude" class="form-control col-sm-8" @bind-Value="@Employee.Latitude"></InputNumber>
-                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.Latitude)" />
+                <InputNumber id="latitude" class="form-control col-sm-8" @bind-Value="@Employee.Address.Latitude"></InputNumber>
+                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Employee.Address.Latitude)" />
             </div>
 
             <div class="form-group row">
@@ -90,6 +108,9 @@
                         {
                         <option value="@jobCategory.JobCategoryId">@jobCategory.JobCategoryName</option>
                         }
+                    /**/
+                    /**/
+                    /**/
                     /**/
                     /**/
                 </InputSelect>

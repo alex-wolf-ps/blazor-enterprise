@@ -22,7 +22,7 @@ namespace BethanysPieShopHRM.UI.Pages
 
         protected string JobCategory = string.Empty;
 
-        public Employee Employee { get; set; } = new Employee() { Address = new Address() };
+        public Employee Employee { get; set; } = new Employee() { Address = new Address(), Contact = new Contact() };
 
         protected override async Task OnInitializedAsync()
         {
@@ -30,7 +30,7 @@ namespace BethanysPieShopHRM.UI.Pages
 
             MapMarkers = new List<Marker>
             {
-                new Marker{Description = $"{Employee.FirstName} {Employee.LastName}",  ShowPopup = false, X = Employee.Longitude, Y = Employee.Latitude}
+                new Marker{Description = $"{Employee.FirstName} {Employee.LastName}",  ShowPopup = false, X = Employee.Address.Longitude, Y = Employee.Address.Latitude}
             };
             JobCategory = (await JobCategoryDataService.GetJobCategoryById(Employee.JobCategoryId)).JobCategoryName;
         }

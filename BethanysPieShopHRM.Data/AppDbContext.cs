@@ -55,18 +55,14 @@ namespace BethanysPieShopHRM.Api.Models
                     EmployeeId = 1,
                     MaritalStatus = MaritalStatus.Single,
                     BirthDate = new DateTime(1979, 1, 16),
-                    Email = "bethany@bethanyspieshop.com",
                     FirstName = "Bethany",
                     LastName = "Smith",
                     Gender = Gender.Female,
-                    PhoneNumber = "324777888773",
                     Smoker = false,
                     JobCategoryId = 1,
                     Comment = "Lorem Ipsum",
                     ExitDate = null,
                     JoinedDate = new DateTime(2015, 3, 1),
-                    Latitude = 50.8503,
-                    Longitude = 4.3517,
                     IsFTE = true
                 },
                 new Employee()
@@ -74,18 +70,14 @@ namespace BethanysPieShopHRM.Api.Models
                     EmployeeId = 2,
                     MaritalStatus = MaritalStatus.Single,
                     BirthDate = new DateTime(1979, 1, 16),
-                    Email = "bob@bethanyspieshop.com",
                     FirstName = "Bob",
                     LastName = "Smith",
                     Gender = Gender.Female,
-                    PhoneNumber = "55512312321",
                     Smoker = false,
                     JobCategoryId = 1,
                     Comment = "Lorem Ipsum",
                     ExitDate = null,
                     JoinedDate = new DateTime(2015, 3, 1),
-                    Latitude = 46.8503,
-                    Longitude = 48.3517
                 }
             });
 
@@ -96,7 +88,9 @@ namespace BethanysPieShopHRM.Api.Models
                 Street = "Grote Markt 1",
                 Zip = "1000",
                 Country = "Belgium",
-                EmployeeId = 1
+                EmployeeId = 1,
+                Latitude = 50.8503,
+                Longitude = 4.3517
             });
             modelBuilder.Entity<Address>().HasData(new Address()
             {
@@ -105,6 +99,28 @@ namespace BethanysPieShopHRM.Api.Models
                 Street = "Grote Markt 1",
                 Zip = "1000",
                 Country = "Belgium",
+                EmployeeId = 2,
+                    Latitude = 50.8503,
+                Longitude = 4.3517
+            });
+
+            modelBuilder.Entity<Contact>().HasData(new Contact()
+            {
+                ContactId = 1,
+                Email = "test@test.com",
+                PhoneNumber = "555-123-1234",
+                EmergencyName = "Bob",
+                EmergencyPhoneNumber = "555-234-4567",
+                EmployeeId = 1
+            });
+
+            modelBuilder.Entity<Contact>().HasData(new Contact()
+            {
+                ContactId = 2,
+                Email = "sample@test.com",
+                PhoneNumber = "555-123-1234",
+                EmergencyName = "Tim",
+                EmergencyPhoneNumber = "555-123-4567",
                 EmployeeId = 2
             });
 

@@ -21,7 +21,11 @@ namespace BethanysPieShopHRM.Api.Models
 
         public Employee GetEmployeeById(int employeeId)
         {
-            var employee = _appDbContext.Employees.Include(x => x.Address).Include(x => x.JobCategory).FirstOrDefault(c => c.EmployeeId == employeeId);
+            var employee = _appDbContext.Employees
+                .Include(x => x.Address)
+                .Include(x => x.Contact)
+                .Include(x => x.JobCategory)
+                .FirstOrDefault(c => c.EmployeeId == employeeId);
             return employee;
         }
 
@@ -38,22 +42,30 @@ namespace BethanysPieShopHRM.Api.Models
 
             if (foundEmployee != null)
             {
-                foundEmployee.MaritalStatus = employee.MaritalStatus;
-                foundEmployee.BirthDate = employee.BirthDate;
-                foundEmployee.Address.City = employee.Address.City;
-                foundEmployee.Email = employee.Email;
                 foundEmployee.FirstName = employee.FirstName;
                 foundEmployee.LastName = employee.LastName;
-                foundEmployee.Gender = employee.Gender;
-                foundEmployee.PhoneNumber = employee.PhoneNumber;
+                foundEmployee.MaritalStatus = employee.MaritalStatus;
+                foundEmployee.BirthDate = employee.BirthDate;
                 foundEmployee.Smoker = employee.Smoker;
-                foundEmployee.Address.Street = employee.Address.Street;
-                foundEmployee.Address.Zip = employee.Address.Zip;
-                foundEmployee.Address.Country = employee.Address.Country;
                 foundEmployee.JobCategoryId = employee.JobCategoryId;
                 foundEmployee.Comment = employee.Comment;
                 foundEmployee.ExitDate = employee.ExitDate;
                 foundEmployee.JoinedDate = employee.JoinedDate;
+                foundEmployee.Gender = employee.Gender;
+
+                // Address
+                foundEmployee.Address.City = employee.Address.City;
+                foundEmployee.Address.Street = employee.Address.Street;
+                foundEmployee.Address.Zip = employee.Address.Zip;
+                foundEmployee.Address.Country = employee.Address.Country;
+                foundEmployee.Address.Latitude = employee.Address.Latitude;
+                foundEmployee.Address.Longitude = employee.Address.Longitude;
+                
+                // Contact
+                foundEmployee.Contact.PhoneNumber = employee.Contact.PhoneNumber;
+                foundEmployee.Contact.EmergencyName = employee.Contact.EmergencyName;
+                foundEmployee.Contact.EmergencyPhoneNumber = employee.Contact.EmergencyPhoneNumber;
+                foundEmployee.Contact.Email = employee.Contact.Email;
 
                 _appDbContext.SaveChanges();
 
