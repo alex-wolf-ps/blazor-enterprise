@@ -35,8 +35,9 @@ namespace BethanysPieShopHRM.UI.Pages
 
         public InputText LastNameInputText { get; set; }
 
-        public Employee Employee { get; set; } = new Employee { Address = new Address(), Contact = new Contact(), 
-            JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now };
+        public Employee Employee { get; set; } = new Employee {
+            JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now 
+        };
 
         //needed to bind to select to value
         protected string JobCategoryId = string.Empty;

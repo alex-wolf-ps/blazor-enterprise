@@ -10,7 +10,7 @@ namespace BethanysPieShopHRM.Shared
 
         [Required]
         public string FirstName { get; set; }
-        
+
         [Required]
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }
@@ -26,7 +26,7 @@ namespace BethanysPieShopHRM.Shared
         public string Comment { get; set; }
         public DateTime? JoinedDate { get; set; }
         public DateTime? ExitDate { get; set; }
-        
+
         public int JobCategoryId { get; set; }
         public JobCategory JobCategory { get; set; }
     }
