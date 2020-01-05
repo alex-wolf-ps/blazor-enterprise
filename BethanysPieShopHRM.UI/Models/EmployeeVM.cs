@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BethanysPieShopHRM.Shared
 {
-    public class Employee : IValidatableObject
+    public class EmployeeVM : IValidatableObject
     {
         public int EmployeeId { get; set; }
         [Required]
@@ -22,6 +22,7 @@ namespace BethanysPieShopHRM.Shared
         [EmailAddress]
         public string Email { get; set; }
 
+        [ValidateComplexType]
         public Address Address { get; set; }
         public string PhoneNumber { get; set; }
         public bool Smoker { get; set; }
@@ -33,7 +34,7 @@ namespace BethanysPieShopHRM.Shared
         public string Comment { get; set; }
         public DateTime? JoinedDate { get; set; }
         public DateTime? ExitDate { get; set; }
-        
+
         public int JobCategoryId { get; set; }
         public JobCategory JobCategory { get; set; }
 
@@ -44,7 +45,7 @@ namespace BethanysPieShopHRM.Shared
         {
             var errors = new List<ValidationResult>();
 
-            if(Latitude != 0 && Longitude == 0)
+            if (Latitude != 0 && Longitude == 0)
             {
                 errors.Add(new ValidationResult("Longitude is required if Latitude is not empty.", new[] { nameof(Longitude) }));
             }

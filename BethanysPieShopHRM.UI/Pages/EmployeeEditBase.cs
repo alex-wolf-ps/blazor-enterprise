@@ -35,7 +35,7 @@ namespace BethanysPieShopHRM.UI.Pages
 
         public InputText LastNameInputText { get; set; }
 
-        public Employee Employee { get; set; } = new Employee() { Address = new Address() };
+        public Employee Employee { get; set; } = new Employee { Address = new Address(), JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now };
 
         //needed to bind to select to value
         protected string JobCategoryId = string.Empty;
@@ -62,12 +62,7 @@ namespace BethanysPieShopHRM.UI.Pages
             {
                 Employee = savedEmployee;
             }
-            else if (employeeId == 0) //new employee is being created
-            {
-                //add some defaults
-                Employee = new Employee { Address = new Address(), JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now };
-            }
-            else
+            else if (employeeId != 0) //new employee is being created
             {
                 Employee = await EmployeeDataService.GetEmployeeDetails(int.Parse(EmployeeId));
             }
