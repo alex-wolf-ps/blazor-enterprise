@@ -9,19 +9,19 @@ namespace BethanysPieShopHRM.Shared
     {
         public int EmployeeId { get; set; }
 
-        [Required]
+        //[Required]
         public string FirstName { get; set; }
 
-        [Required]
+        //[Required]
         public string LastName { get; set; }
 
-        [BirthdayValidator(MinimumAge = 18)]
+        //[BirthdayValidator(MinimumAge = 18)]
         public DateTime BirthDate { get; set; }
         
         [ValidateComplexType]
         public Address Address { get; set; }
 
-        [ValidateComplexType]
+        //[ValidateComplexType]
         public Contact Contact { get; set; }
         public bool Smoker { get; set; }
         public bool IsOPEX { get; set; }
@@ -36,5 +36,6 @@ namespace BethanysPieShopHRM.Shared
 
         public int JobCategoryId { get; set; }
         public JobCategory JobCategory { get; set; }
+
     }
 }
