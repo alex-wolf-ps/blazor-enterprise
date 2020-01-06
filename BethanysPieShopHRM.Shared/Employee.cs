@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BethanysPieShopHRM.Shared.Validation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -13,8 +14,14 @@ namespace BethanysPieShopHRM.Shared
 
         [Required]
         public string LastName { get; set; }
+
+        [BirthdayValidator(MinimumAge = 18)]
         public DateTime BirthDate { get; set; }
+        
+        [ValidateComplexType]
         public Address Address { get; set; }
+
+        [ValidateComplexType]
         public Contact Contact { get; set; }
         public bool Smoker { get; set; }
         public bool IsOPEX { get; set; }

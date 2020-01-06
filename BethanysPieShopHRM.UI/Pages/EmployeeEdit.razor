@@ -10,7 +10,7 @@
 
             <br>
             <EditForm Model="@Employee" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
-                <DataAnnotationsValidator />
+                <ObjectGraphDataAnnotationsValidator />
 
                 <div class="form-group row">
                     <label for="lastName" class="col-sm-3">Last name: </label>
