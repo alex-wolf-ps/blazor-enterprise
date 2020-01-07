@@ -41,9 +41,6 @@ namespace BethanysPieShopHRM.UI.Pages
             JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now 
         };
 
-        //needed to bind to select input value
-        protected string JobCategoryId = string.Empty;
-
         //used to store state of screen
         protected string Message = string.Empty;
         protected string StatusClass = string.Empty;
@@ -64,14 +61,10 @@ namespace BethanysPieShopHRM.UI.Pages
             {
                 Employee = await EmployeeDataService.GetEmployeeDetails(int.Parse(EmployeeId));
             }
-
-            JobCategoryId = Employee.JobCategoryId.ToString();
         }
 
         protected async Task HandleValidSubmit()
         {
-            Employee.JobCategoryId = int.Parse(JobCategoryId);
-
             if (Employee.EmployeeId == 0) //new
             {
                 var addedEmployee = await EmployeeDataService.AddEmployee(Employee);
