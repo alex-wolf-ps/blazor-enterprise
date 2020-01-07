@@ -41,7 +41,7 @@ namespace BethanysPieShopHRM.UI.Pages
             JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now 
         };
 
-        //needed to bind to select to value
+        //needed to bind to select input value
         protected string JobCategoryId = string.Empty;
 
         //used to store state of screen
