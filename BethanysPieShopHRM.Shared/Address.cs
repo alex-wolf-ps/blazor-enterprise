@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BethanysPieShopHRM.Shared
 {
-    public class Address
+    public class Address : IValidatableObject
     {
         public int AddressId { get; set; }
         [Required]
@@ -23,5 +23,26 @@ namespace BethanysPieShopHRM.Shared
 
         public int EmployeeId { get; set; }
         public Employee Employee { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(
+            ValidationContext validationContext)
+        {
+            var errors = new List<ValidationResult>();
+
+            if (Latitude != 0 && Longitude == 0)
+            {
+                errors.Add(new ValidationResult(
+                    "Longitude is required if Latitude has a value.",
+                    new[] { nameof(Longitude) }));
+            }
+            else if (Longitude != 0 && Latitude == 0)
+            {
+                errors.Add(new ValidationResult(
+                    "Latitude is required if Longitude has a value.",
+                    new[] { nameof(Latitude) }));
+            }
+
+            return errors;
+        }
     }
 }
