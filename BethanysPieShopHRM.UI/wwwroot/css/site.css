@@ -307,3 +307,8 @@ a[data-toggle="collapse"] {
 .sub-menu {
     display: none;
 }
+
+.validation-message {
+    margin-left: 25px;
+    color: red;
+}
