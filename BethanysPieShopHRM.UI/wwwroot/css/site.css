@@ -243,7 +243,72 @@ nav {
     font-weight: bold;
 }
 
+#sidebar {
+    color: #fff;
+    transition: all 0.3s;
+}
+
+    #sidebar.active {
+        margin-left: -250px;
+    }
+
+    #sidebar .sidebar-header {
+        padding: 20px;
+        background: #6d7fcc;
+    }
+
+    #sidebar ul.components {
+        padding: 20px 0;
+    }
+
+    #sidebar ul p {
+        color: #fff;
+        padding: 10px;
+    }
+
+    #sidebar ul li a {
+        padding: 10px;
+        font-size: 1.1em;
+        display: block;
+        color: #fff;
+    }
+
+        #sidebar ul li a:hover {
+            color: #7386D5;
+            text-decoration: none;
+            background: #fff;
+        }
+
+    #sidebar ul li.active > a,
+    a[aria-expanded="true"] {
+        color: #fff;
+    }
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+#sidebar .sub-menu li a {
+    padding-left: 25px;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.sub-menu {
+    display: none;
+}
+
 .validation-message {
-    color: red;
     margin-left: 25px;
+    color: red;
 }

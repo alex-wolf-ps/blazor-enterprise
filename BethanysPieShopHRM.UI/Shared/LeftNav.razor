@@ -14,8 +14,8 @@
                     </NavLink>
                 </li>
                 <li>
-                    <a href="#tasks" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tasks</a>
-                    <ul class="collapse list-unstyled sub-menu" id="tasks">
+                    <a data-toggle="collapse" class="dropdown-toggle">Tasks</a>
+                    <ul class="list-unstyled sub-menu" id="tasks">
                         <li>
                             <NavLink href="/tasks">
                                 View tasks
@@ -29,8 +29,8 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#employees" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Employees</a>
-                    <ul class="collapse list-unstyled sub-menu" id="employees">
+                    <a data-toggle="collapse" class="dropdown-toggle">Employees</a>
+                    <ul class="list-unstyled sub-menu" id="employees">
                         <li>
                             <NavLink href="/employeeoverview">
                                 View Employees
@@ -44,8 +44,8 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#jobs" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Opportunities</a>
-                    <ul class="collapse list-unstyled sub-menu" id="jobs">
+                    <a data-toggle="collapse" class="dropdown-toggle">Opportunities</a>
+                    <ul class="list-unstyled sub-menu" id="jobs">
                         <li>
                             <NavLink href="/jobs">
                                 Jobs
@@ -59,8 +59,8 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#training" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Expenses</a>
-                    <ul class="collapse list-unstyled sub-menu" id="training">
+                    <a data-toggle="collapse" class="dropdown-toggle">Expenses</a>
+                    <ul class="list-unstyled sub-menu" id="training">
                         <li>
                             <NavLink href="/expenses">
                                 Expenses
@@ -74,8 +74,8 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#feedback" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Feedback</a>
-                    <ul class="collapse list-unstyled sub-menu" id="feedback">
+                    <a data-toggle="collapse" class="dropdown-toggle">Feedback</a>
+                    <ul class="list-unstyled sub-menu" id="feedback">
                         <li>
                             <NavLink href="/surveys">
                                 Surveys
@@ -96,62 +96,4 @@
             </ul>
         </nav>
     </div>
-    </div>
-    <style>
-        #sidebar {
-            color: #fff;
-            transition: all 0.3s;
-        }
-
-            #sidebar.active {
-                margin-left: -250px;
-            }
-
-            #sidebar .sidebar-header {
-                padding: 20px;
-                background: #6d7fcc;
-            }
-
-            #sidebar ul.components {
-                padding: 20px 0;
-            }
-
-            #sidebar ul p {
-                color: #fff;
-                padding: 10px;
-            }
-
-            #sidebar ul li a {
-                padding: 10px;
-                font-size: 1.1em;
-                display: block;
-                color: #fff;
-            }
-
-                #sidebar ul li a:hover {
-                    color: #7386D5;
-                    text-decoration: none;
-                    background: #fff;
-                }
-
-            #sidebar ul li.active > a,
-            a[aria-expanded="true"] {
-                color: #fff;
-            }
-
-        a[data-toggle="collapse"] {
-            position: relative;
-        }
-
-        .dropdown-toggle::after {
-            display: block;
-            position: absolute;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
-        }
-
-        #sidebar .sub-menu li a {
-            padding-left: 25px;
-        }
-    </style>
+</div>
