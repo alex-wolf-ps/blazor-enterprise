@@ -39,7 +39,6 @@ namespace BethanysPieShopHRM.UI
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<ISurveyDataService, SurveyDataService>();
             services.AddTransient<ICurrencyDataService, CurrencyDataService>();
-            services.AddTransient<IExpenseApprovalService, ExpenseApprovalService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
