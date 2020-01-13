@@ -1,0 +1,47 @@
+﻿@page "/jobedit"
+@page "/jobedit/{JobId:int}"
+@using BethanysPieShopHRM.Shared
+@inherits JobEditBase
+
+<div class="entity-edit">
+    <h1 class="page-title">Job Opportunity</h1>
+    <br />
+    <EditForm Model="@Job" OnValidSubmit="@HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <div class="form-group row">
+            <label for="title" class="col-sm-3">Title: </label>
+            <InputText id="title" class="form-control col-sm-8" @bind-Value="@Job.Title" placeholder="Title"></InputText>
+        </div>
+        <div class="form-group row">
+            <label for="Description" class="col-sm-3">Description: </label>
+            <InputTextArea id="Description" class="form-control col-sm-8" @bind-Value="@Job.Description" placeholder="Description"></InputTextArea>
+        </div>
+        <div class="form-group row">
+            <label for="Description" class="col-sm-3">Required Skills: </label>
+            <InputTextArea id="Description" class="form-control col-sm-8" @bind-Value="@Job.RequiredSkills" placeholder="Required Skills"></InputTextArea>
+        </div>
+
+        <div class="form-group row">
+            <label for="degree" class="col-sm-3">Degree Requirements: </label>
+            <InputTextArea id="degree" class="form-control col-sm-8" @bind-Value="@Job.DegreeRequirements" placeholder="Degree Requirements"></InputTextArea>
+        </div>
+
+        <div class="form-group row">
+            <label for="contact" class="col-sm-3">Contact Number: </label>
+            <InputText id="contact" class="form-control col-sm-8" @bind-Value="@Job.ContactNumber" placeholder="Phone"></InputText>
+        </div>
+
+        <div class="form-group row">
+            <label for="salary" class="col-sm-3">Salary: </label>
+            <InputText id="salary" class="form-control col-sm-8" @bind-Value="@Job.Salary" placeholder="Salary"></InputText>
+        </div>
+
+        <div class="form-group row">
+            <label for="start" class="col-sm-3">Start Date: </label>
+            <InputText id="start" class="form-control col-sm-8" @bind-Value="@Job.StartDate" placeholder="Start Date"></InputText>
+        </div>
+
+        <button type="submit" class="btn btn-primary edit-btn">Submit</button>
+    </EditForm>
+</div>

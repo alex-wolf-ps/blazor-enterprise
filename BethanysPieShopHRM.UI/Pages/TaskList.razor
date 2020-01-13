@@ -2,26 +2,26 @@
 @using BethanysPieShopHRM.Shared
 @using BethanysPieShopHRM.UI.Services
 @inherits TaskListBase
-    
+
 <div id="tasks" class="widget">
-<h3>Tasks<button type="submit" @onclick="AddTask" class="btn btn-primary edit-btn float-right">Add Task</button></h3>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Description</th>
-            <th scope="col">Status</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var task in Tasks)
-        {
+    <h3>Tasks<button type="submit" @onclick="AddTask" class="btn btn-primary edit-btn float-right">Add Task</button></h3>
+    <table class="table table-striped">
+        <thead>
             <tr>
-                <td>@task.Title</td>
-                <td>@task.Description</td>
-                <td>@task.Status</td>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Status</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var task in Tasks)
+            {
+                <tr>
+                    <td>@task.Title</td>
+                    <td>@task.Description</td>
+                    <td>@task.Status</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

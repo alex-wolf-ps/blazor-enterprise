@@ -1,0 +1,36 @@
+﻿@page "/jobs"
+@inherits JobsOverviewBase
+    <div class="entity-edit">
+        <h1 class="page-title">All Jobs</h1>
+        <br />
+        @if (Jobs != null)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Salary</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var job in Jobs)
+                    {
+                        <tr>
+                            <td>@job.Title</td>
+                            <td>@job.Description</td>
+                            <td>@job.Salary</td>
+                            <td>
+                                <a href="@($"jobdetail/{job.Id}")" class="btn btn-primary table-btn">
+                                    <i class="fas fa-info-circle"></i>
+                                </a>
+                                <a href="@($"jobedit/{job.Id}")" class="btn btn-primary table-btn">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>

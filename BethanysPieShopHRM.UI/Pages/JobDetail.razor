@@ -1,0 +1,60 @@
+﻿
+@page "/jobdetail/{id:int}"
+@inherits JobDetailBase
+
+<section class="employee-detail">
+    <h1 class="page-title">Details for @Job.Title</h1>
+
+    <div class="col-12 row">
+        <div class="col-xs-12 col-sm-8">
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Title</label>
+                <div class="col-sm-8">
+                    <label type="text" class="form-control-plaintext">@Job.Title</label>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Description</label>
+                <div class="col-sm-8">
+                    <label type="text" readonly class="form-control-plaintext">@Job.Description</label>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Degree Requirements</label>
+                <div class="col-sm-8">
+                    <label type="text" readonly class="form-control-plaintext">@Job.DegreeRequirements</label>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Required Skills</label>
+                <div class="col-sm-8">
+                    <label type="text" readonly class="form-control-plaintext">@Job.RequiredSkills</label>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Salary</label>
+                <div class="col-sm-8">
+                    <label type="text" readonly class="form-control-plaintext">@Job.Salary</label>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Start Date</label>
+                <div class="col-sm-8">
+                    <label type="text" readonly class="form-control-plaintext">@Job.StartDate</label>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Contact Number</label>
+                <div class="col-sm-8">
+                    <label type="text" readonly class="form-control-plaintext">@Job.ContactNumber</label>
+                </div>
+            </div>
+        </div>
+        </div>
+</section>

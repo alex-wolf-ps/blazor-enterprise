@@ -6,9 +6,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BethanysPieShopHRM.UI.Services;
 using BethanysPieShopHRM.UI.Data;
-using System;
 using Blazor.FlexGrid;
 using BethanysPieShopHRM.UI.Pages;
+using System;
 
 namespace BethanysPieShopHRM.UI
 {
@@ -31,7 +31,7 @@ namespace BethanysPieShopHRM.UI
             var pieShopURI = new Uri("https://localhost:44340/");
             var recruitingURI = new Uri("https://localhost:5001/");
 
-            void RegisterTypedClient<TClient, TImplementation>(Uri apiBaseUrl) 
+            void RegisterTypedClient<TClient, TImplementation>(Uri apiBaseUrl)
                 where TClient : class where TImplementation : class, TClient
             {
                 services.AddHttpClient<TClient, TImplementation>(client =>
@@ -49,7 +49,6 @@ namespace BethanysPieShopHRM.UI
             RegisterTypedClient<ICurrencyDataService, CurrencyDataService>(pieShopURI);
             RegisterTypedClient<IExpenseDataService, ExpenseDataService>(pieShopURI);
             RegisterTypedClient<IJobDataService, JobsDataService>(recruitingURI);
-
 
             // Helper services
             services.AddTransient<IEmailService, EmailService>();
