@@ -33,7 +33,6 @@ namespace BethanysPieShopHRM.UI
                 return client;
             });
 
-            //services.AddScoped<IEmployeeDataService, MockEmployeeDataService>();
             services.AddScoped<IEmployeeDataService, EmployeeDataService>();
             services.AddTransient<ICountryDataService, CountryDataService>();
             services.AddTransient<IJobCategoryDataService, JobCategoryDataService>();
