@@ -28,9 +28,3 @@
         </tbody>
     </table>
 </div>
-@code{
-    void OnClick(ItemClickEventArgs e)
-    {
-        Console.WriteLine($"Item Clicked => Menu: {e.ContextMenuId}, MenuTarget: {e.ContextMenuTargetId}, IsCanceled: {e.IsCanceled}, MenuItem: {e.MenuItemElement}, MouseEvent: {e.MouseEvent}");
-    }
-}

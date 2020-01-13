@@ -297,3 +297,11 @@ a[data-toggle="collapse"] {
 #sidebar .sub-menu li a {
     padding-left: 25px;
 }
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.sub-menu {
+    display: none;
+}
