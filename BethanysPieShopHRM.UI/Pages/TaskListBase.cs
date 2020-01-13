@@ -21,7 +21,6 @@ namespace BethanysPieShopHRM.UI.Pages
 
         public List<HRTask> Tasks { get; set; } = new List<HRTask>();
 
-
         protected override async Task OnInitializedAsync()
         {
             Tasks = (await taskService.GetAllTasks()).ToList();
