@@ -41,23 +41,18 @@
                                 Add new employee
                             </NavLink>
                         </li>
-                        <li>
-                            <NavLink href="/employeeedit">
-                                Employee Review
-                            </NavLink>
-                        </li>
                     </ul>
                 </li>
                 <li>
                     <a href="#jobs" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Opportunities</a>
                     <ul class="collapse list-unstyled sub-menu" id="jobs">
                         <li>
-                            <NavLink href="/employeeoverview">
+                            <NavLink href="/">
                                 Jobs
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink href="/employeeedit">
+                            <NavLink href="/">
                                 Add new job
                             </NavLink>
                         </li>
@@ -102,61 +97,3 @@
         </nav>
     </div>
     </div>
-    <style>
-        #sidebar {
-            color: #fff;
-            transition: all 0.3s;
-        }
-
-            #sidebar.active {
-                margin-left: -250px;
-            }
-
-            #sidebar .sidebar-header {
-                padding: 20px;
-                background: #6d7fcc;
-            }
-
-            #sidebar ul.components {
-                padding: 20px 0;
-            }
-
-            #sidebar ul p {
-                color: #fff;
-                padding: 10px;
-            }
-
-            #sidebar ul li a {
-                padding: 10px;
-                font-size: 1.1em;
-                display: block;
-                color: #fff;
-            }
-
-                #sidebar ul li a:hover {
-                    color: #7386D5;
-                    text-decoration: none;
-                    background: #fff;
-                }
-
-            #sidebar ul li.active > a,
-            a[aria-expanded="true"] {
-                color: #fff;
-            }
-
-        a[data-toggle="collapse"] {
-            position: relative;
-        }
-
-        .dropdown-toggle::after {
-            display: block;
-            position: absolute;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
-        }
-
-        #sidebar .sub-menu li a {
-            padding-left: 25px;
-        }
-    </style>
