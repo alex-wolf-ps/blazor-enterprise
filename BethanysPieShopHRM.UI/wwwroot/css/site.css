@@ -312,3 +312,11 @@ a[data-toggle="collapse"] {
     margin-left: 25px;
     color: red;
 }
+
+#sidebar .toggle-hide {
+    display: none;
+}
+
+#sidebar .toggle-show {
+    display: block;
+}
