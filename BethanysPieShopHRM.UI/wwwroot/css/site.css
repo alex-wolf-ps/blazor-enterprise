@@ -308,7 +308,17 @@ a[data-toggle="collapse"] {
     display: none;
 }
 
+<<<<<<< HEAD
 .validation-message {
     margin-left: 25px;
     color: red;
 }
+=======
+#sidebar .toggle-hide {
+    display: none;
+}
+
+#sidebar .toggle-show {
+    display: block;
+}
+>>>>>>> 2257c3b... fixed menu
