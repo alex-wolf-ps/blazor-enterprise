@@ -305,3 +305,11 @@ a[data-toggle="collapse"] {
 .sub-menu {
     display: none;
 }
+
+#sidebar .toggle-hide {
+    display: none;
+}
+
+#sidebar .toggle-show {
+    display: block;
+}
