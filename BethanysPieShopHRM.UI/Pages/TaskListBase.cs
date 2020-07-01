@@ -1,6 +1,8 @@
 ﻿using BethanysPieShopHRM.Shared;
 using BethanysPieShopHRM.UI.Services;
 using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,29 +12,40 @@ namespace BethanysPieShopHRM.UI.Pages
     public class TaskListBase : ComponentBase
     {
         [Inject]
-    public ITaskDataService taskService { get; set; }
+        public ITaskDataService taskService { get; set; }
 
-    [Inject]
-    public NavigationManager navManager { get; set; }
+        [Inject]
+        public NavigationManager navManager { get; set; }
 
-    [Parameter]
-    public int Count { get; set; }
+        [Inject]
+        public ILogger<TaskListBase> Logger { get; set; }
 
-    public List<HRTask> Tasks { get; set; } = new List<HRTask>();
+        [Parameter]
+        public int Count { get; set; }
 
-    protected override async Task OnInitializedAsync()
-    {
-        Tasks = (await taskService.GetAllTasks()).ToList();
+        public List<HRTask> Tasks { get; set; } = new List<HRTask>();
 
-        if(Count !=0)
+        protected override async Task OnInitializedAsync()
         {
-            Tasks = Tasks.Take(Count).ToList();
-        }
-    }
+            try
+            {
+                Tasks = (await taskService.GetAllTasks()).ToList();
+            }
+            catch (Exception e)
+            {
+                Logger.LogDebug(e, e.Message);
+            }
+            
 
-    public void AddTask()
-    {
-        navManager.NavigateTo("taskedit");
-    }
+            if (Count != 0)
+            {
+                Tasks = Tasks.Take(Count).ToList();
+            }
+        }
+
+        public void AddTask()
+        {
+            navManager.NavigateTo("taskedit");
+        }
     }
 }
