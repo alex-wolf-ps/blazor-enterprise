@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BethanysPieShopHRM.Shared
+﻿namespace BethanysPieShopHRM.Shared
 {
     public class Answer
     {
@@ -10,7 +6,6 @@ namespace BethanysPieShopHRM.Shared
         public string Response { get; set; }
         public double Rating { get; set; }
         public int SurveyId { get; set; }
-
         public Survey Survey { get; set; }
     }
 }
